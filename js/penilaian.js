@@ -17,7 +17,7 @@ function renderPenilaianKategori(tableId, kategori) {
                         <td class="center">${item.nama}</td>
                         <td class="center">
                             <button class="act-btn edit" onclick="siapEditPenilaian(${item.id}, '${kategori}')">
-                                <i class="fa-solid fa-pencil"></i> Beri Nilai
+                                <i class="fa-solid fa-pencil"></i> 
                             </button>
                         </td>
                     </tr>`;
@@ -59,12 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (document.getElementById('edit-label-produk')) {
                     document.getElementById('edit-label-produk').innerText = "Produk: " + (data.nama || "Unknown");
                 }
-                // Isi form dengan nilai C1-C4 dari database
+                // Isi form dengan nilai C1-C7 dari database
                 if (data) {
                     document.getElementById('edit_C1').value = data.C1 || '';
                     document.getElementById('edit_C2').value = data.C2 || '';
                     document.getElementById('edit_C3').value = data.C3 || '';
                     document.getElementById('edit_C4').value = data.C4 || '';
+                    document.getElementById('edit_C5').value = data.C5 || '';
+                    document.getElementById('edit_C6').value = data.C6 || '';
+                    document.getElementById('edit_C7').value = data.C7 || '';
                 }
             });
 
@@ -76,7 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 C1: document.getElementById('edit_C1').value,
                 C2: document.getElementById('edit_C2').value,
                 C3: document.getElementById('edit_C3').value,
-                C4: document.getElementById('edit_C4').value
+                C4: document.getElementById('edit_C4').value,
+                C5: document.getElementById('edit_C5').value,
+                C6: document.getElementById('edit_C6').value,
+                C7: document.getElementById('edit_C7').value
             };
 
             fetch('be/simpan_penilaian.php', {
@@ -108,8 +114,8 @@ function renderSemuaTabelPenilaian() {
 function getKeteranganNilai(angka) {
     const skor = parseInt(angka);
     if (skor >= 100) return "Sangat Aman";
-    if (skor >= 75)  return "Aman";
-    if (skor >= 50)  return "Cukup Aman";
-    if (skor >= 25)  return "Iritan/Tidak Aman";
+    if (skor >= 75) return "Aman";
+    if (skor >= 50) return "Cukup Aman";
+    if (skor >= 25) return "Iritan/Tidak Aman";
     return "Belum Dinilai";
 }

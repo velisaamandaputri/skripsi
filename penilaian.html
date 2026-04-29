@@ -38,12 +38,12 @@
                 <a href="penilaian.html" class="nav-link active">
                     <i class="fa-solid fa-square-poll-vertical"></i> Penilaian
                 </a>
-                <a href="matriks.html" class="nav-link">
+                <!-- <a href="matriks.html" class="nav-link">
                     <i class="fa-solid fa-table"></i> Matriks Perhitungan
                 </a>
                 <a href="hasil-rekomendasi.html" class="nav-link">
                     <i class="fa-solid fa-wand-magic-sparkles"></i> Hasil Rekomendasi
-                </a>
+                </a> -->
                 <a href="user.html" class="nav-link">
                     <i class="fa-solid fa-users-gear"></i> Data User
                 </a>
@@ -85,6 +85,11 @@
                             <p class="path">Dashboard > <span>Penilaian</span></p>
                             <h1>Penilaian Produk</h1>
                             <p class="subtitle">Input nilai kriteria untuk setiap kategori produk.</p>
+                        </div>
+                        <div class="header-action">
+                            <button class="btn-primary" onclick="lihatHasilNormalisasi()">
+                                <i class="fa-solid fa-calculator"></i> Lihat Hasil Normalisasi di Console
+                            </button>
                         </div>
                     </div>
 
@@ -167,8 +172,30 @@
                     </div>
                 </section>
 
+                <script src="js/saw.js"></script>
                 <script src="js/penilaian.js"></script>
-                <script src="script.js"></script>
+                <script src="js/script.js"></script>
+                <script>
+                    // Fungsi untuk menampilkan hasil normalisasi di console
+                    async function lihatHasilNormalisasi() {
+                        console.clear(); // Bersihkan console
+                        console.log('%c🔍 MEMULAI PERHITUNGAN NORMALISASI SAW...', 'color: #4CAF50; font-size: 16px; font-weight: bold;');
+                        console.log('%cSilahkan scroll ke bawah untuk melihat detail lengkap\n', 'color: #2196F3; font-size: 12px;');
+
+                        // Hitung untuk semua kategori
+                        await hitungSAW('facewash');
+                        await hitungSAW('moisturizer');
+                        await hitungSAW('sunscreen');
+
+                        console.log('%c✅ SELESAI! Scroll ke atas untuk melihat detail perhitungan', 'color: #4CAF50; font-size: 14px; font-weight: bold;');
+                        alert('✅ Hasil normalisasi telah ditampilkan di Console!\n\nCara melihat:\n1. Tekan F12 (Windows) atau Cmd+Option+I (Mac)\n2. Pilih tab "Console"\n3. Scroll untuk melihat detail perhitungan');
+                    }
+
+                    // Auto-run saat halaman dimuat (opsional)
+                    document.addEventListener('DOMContentLoaded', () => {
+                        console.log('%c💡 TIP: Klik tombol "Lihat Hasil Normalisasi di Console" untuk melihat detail perhitungan SAW', 'color: #FF9800; font-size: 12px; font-style: italic;');
+                    });
+                </script>
 </body>
 
 </html>

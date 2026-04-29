@@ -1,7 +1,7 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "db_skincare");
+$conn = mysqli_connect("localhost", "root", "", "skincare");
 
 if (!$conn) {
-    die("Koneksi gagal: " . mysqli_connect_error());
+    error_log("Database connection failed: " . mysqli_connect_error());
 }
 ?>

@@ -3,39 +3,109 @@ include 'koneksi.php';
 
 header('Content-Type: application/json');
 
-if (isset($_GET['id']) && isset($_GET['kategori'])) {
-    $id_alt = $_GET['id'];
-    $kategori = $_GET['kategori'];
+// Cek koneksi database
+if (!$conn) {
+    echo json_encode([
+        "status" => "error",
+        "message" => "Koneksi database gagal"
+    ]);
+    exit;
+}
 
-    $query = "SELECT a.nama, a.kode, p.C1, p.C2, p.C3, p.C4 
+// GET SINGLE PENILAIAN (untuk edit)
+if (isset($_GET['id']) && isset($_GET['kategori'])) {
+    $id_alt = mysqli_real_escape_string($conn, $_GET['id']);
+    $kategori = mysqli_real_escape_string($conn, $_GET['kategori']);
+
+    $query = "SELECT a.nama, a.kode, 
+              COALESCE(p.C1, 0) as C1, 
+              COALESCE(p.C2, 0) as C2, 
+              COALESCE(p.C3, 0) as C3, 
+              COALESCE(p.C4, 0) as C4,
+              COALESCE(p.C5, 0) as C5,
+              COALESCE(p.C6, 0) as C6,
+              COALESCE(p.C7, 0) as C7
               FROM alternatif a 
               LEFT JOIN penilaian p ON a.id = p.alternatif_id 
-              WHERE a.id = ? AND a.kategori = ?";
+              WHERE a.id = '$id_alt' AND a.kategori = '$kategori'";
     
-    $stmt = mysqli_prepare($conn, $query);
+    $result = mysqli_query($conn, $query);
     
-    if (!$stmt) {
-        die(json_encode(["error" => mysqli_error($conn)]));
+    if (!$result) {
+        echo json_encode([
+            "status" => "error",
+            "message" => "Query gagal: " . mysqli_error($conn)
+        ]);
+        exit;
     }
 
-    mysqli_stmt_bind_param($stmt, "is", $id_alt, $kategori);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
     $data = mysqli_fetch_assoc($result);
-
-    echo json_encode($data);
-
-} else if (isset($_GET['kategori'])) {
-    $kategori = $_GET['kategori'];
-    $query = "SELECT a.id, a.kode, a.nama, p.C1, p.C2, p.C3, p.C4 
+    
+    if ($data) {
+        echo json_encode($data);
+    } else {
+        echo json_encode([
+            "status" => "error",
+            "message" => "Data tidak ditemukan"
+        ]);
+    }
+}
+// GET ALL PENILAIAN BY KATEGORI
+else if (isset($_GET['kategori'])) {
+    $kategori = mysqli_real_escape_string($conn, $_GET['kategori']);
+    
+    $query = "SELECT a.id, a.kode, a.nama, 
+              COALESCE(p.C1, 0) as C1, 
+              COALESCE(p.C2, 0) as C2, 
+              COALESCE(p.C3, 0) as C3, 
+              COALESCE(p.C4, 0) as C4,
+              COALESCE(p.C5, 0) as C5,
+              COALESCE(p.C6, 0) as C6,
+              COALESCE(p.C7, 0) as C7
               FROM alternatif a 
               LEFT JOIN penilaian p ON a.id = p.alternatif_id 
-              WHERE a.kategori = ?";
+              WHERE a.kategori = '$kategori'
+              ORDER BY a.kode ASC";
               
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "s", $kategori);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_query($conn, $query);
+    
+    if (!$result) {
+        echo json_encode([
+            "status" => "error",
+            "message" => "Query gagal: " . mysqli_error($conn)
+        ]);
+        exit;
+    }
+
+    $data = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = $row;
+    }
+    echo json_encode($data);
+}
+// GET ALL PENILAIAN
+else {
+    $query = "SELECT a.id, a.kode, a.nama, a.kategori,
+              COALESCE(p.C1, 0) as C1, 
+              COALESCE(p.C2, 0) as C2, 
+              COALESCE(p.C3, 0) as C3, 
+              COALESCE(p.C4, 0) as C4,
+              COALESCE(p.C5, 0) as C5,
+              COALESCE(p.C6, 0) as C6,
+              COALESCE(p.C7, 0) as C7
+              FROM alternatif a 
+              LEFT JOIN penilaian p ON a.id = p.alternatif_id 
+              ORDER BY a.kategori, a.kode ASC";
+              
+    $result = mysqli_query($conn, $query);
+    
+    if (!$result) {
+        echo json_encode([
+            "status" => "error",
+            "message" => "Query gagal: " . mysqli_error($conn)
+        ]);
+        exit;
+    }
 
     $data = [];
     while ($row = mysqli_fetch_assoc($result)) {

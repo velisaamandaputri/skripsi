@@ -1,12 +1,42 @@
 <?php
+// Set header JSON agar response selalu dalam format JSON
+header('Content-Type: application/json');
+
 session_start();
 include 'koneksi.php';
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+// Cek koneksi database
+if (!$conn) {
+    echo json_encode([
+        "status" => "error",
+        "message" => "Koneksi database gagal"
+    ]);
+    exit;
+}
+
+// Validasi input
+if (!isset($_POST['username']) || !isset($_POST['password'])) {
+    echo json_encode([
+        "status" => "error",
+        "message" => "Username dan password harus diisi"
+    ]);
+    exit;
+}
+
+$username = mysqli_real_escape_string($conn, $_POST['username']);
+$password = mysqli_real_escape_string($conn, $_POST['password']);
 
 $query = "SELECT * FROM users WHERE nama='$username' AND password='$password'";
 $result = mysqli_query($conn, $query);
+
+// Cek jika query gagal
+if (!$result) {
+    echo json_encode([
+        "status" => "error",
+        "message" => "Query gagal: " . mysqli_error($conn)
+    ]);
+    exit;
+}
 
 $user = mysqli_fetch_assoc($result);
 
@@ -21,7 +51,8 @@ if ($user) {
     ]);
 } else {
     echo json_encode([
-        "status" => "error"
+        "status" => "error",
+        "message" => "Username atau password salah"
     ]);
 }
 ?>

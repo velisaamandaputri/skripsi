@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="app-container">
@@ -26,13 +28,15 @@
                 <a href="kriteria.html" class="nav-link"><i class="fa-solid fa-list-ul"></i> Data Kriteria</a>
                 <a href="alternatif.html" class="nav-link"><i class="fa-solid fa-address-book"></i> Data Alternatif</a>
                 <a href="penilaian.html" class="nav-link"><i class="fa-solid fa-square-poll-vertical"></i> Penilaian</a>
-                <a href="matriks.html" class="nav-link"><i class="fa-solid fa-table"></i> Matriks Perhitungan</a>
+                <!-- <a href="matriks.html" class="nav-link"><i class="fa-solid fa-table"></i> Matriks Perhitungan</a>
                 <a href="hasil-rekomendasi.html" class="nav-link active">
                     <i class="fa-solid fa-wand-magic-sparkles"></i> Hasil Rekomendasi
-                </a>
+                </a> -->
                 <a href="user.html" class="nav-link"><i class="fa-solid fa-users-gear"></i> Data User</a>
-                <a href="riwayat.html" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat Pengguna</a>
-                <div class="nav-logout"><a href="#" class="nav-link btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></div>
+                <a href="riwayat.html" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat
+                    Pengguna</a>
+                <div class="nav-logout"><a href="#" class="nav-link btn-logout"><i
+                            class="fa-solid fa-right-from-bracket"></i> Logout</a></div>
             </nav>
         </aside>
 
@@ -40,7 +44,8 @@
         <main class="content-area">
             <header class="topbar">
                 <div class="topbar-left">
-                    <button class="back-circle" onclick="window.location.href='dashboard.html'"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="back-circle" onclick="window.location.href='dashboard.html'"><i
+                            class="fa-solid fa-chevron-left"></i></button>
                     <h2>Dashboard</h2>
                 </div>
                 <div class="topbar-center">
@@ -50,88 +55,92 @@
                     </div>
                 </div>
                 <div class="topbar-right">
-                    <div class="admin-profile"><div class="avatar-circle">A</div><div class="info"><strong>Admin</strong><small>online</small></div></div>
+                    <div class="admin-profile">
+                        <div class="avatar-circle">A</div>
+                        <div class="info"><strong>Admin</strong><small>online</small></div>
+                    </div>
                 </div>
             </header>
 
             <!-- Cari bagian ini di hasil-rekomendasi.html dan ganti kodenya -->
-<section class="body-content">
-    <div class="header-flex">
-        <div class="header-title">
-            <p class="path">Dashboard > <span>Hasil Rekomendasi</span></p>
-            <h1>Hasil Rekomendasi Produk</h1>
-            <p class="subtitle">Peringkat produk berdasarkan perhitungan metode SAW.</p>
-        </div>
-    </div>
+            <section class="body-content">
+                <div class="header-flex">
+                    <div class="header-title">
+                        <p class="path">Dashboard > <span>Hasil Rekomendasi</span></p>
+                        <h1>Hasil Rekomendasi Produk</h1>
+                        <p class="subtitle">Peringkat produk berdasarkan perhitungan metode SAW.</p>
+                    </div>
+                </div>
 
-    <!-- KATEGORI 1: FACE WASH -->
-    <h2 class="category-divider">1. Kategori Face Wash</h2>
-    <div class="card-container no-padding mb-30">
-        <div class="card-header-grey">
-            <i class="fa-solid fa-soap"></i>
-            <strong>Rekomendasi Face Wash</strong>
-        </div>
-        <div class="table-wrapper-res">
-            <table id="table-final-facewash">
-                <thead>
-                    <tr>
-                        <th width="100">Alternatif</th>
-                        <th>Nama Produk</th>
-                        <th width="150">Nilai (V)</th>
-                        <th width="100">Ranking</th>
-                    </tr>
-                </thead>
-                <tbody><!-- Diisi JS --></tbody>
-            </table>
-        </div>
-    </div>
+                <!-- KATEGORI 1: FACE WASH -->
+                <h2 class="category-divider">1. Kategori Face Wash</h2>
+                <div class="card-container no-padding mb-30">
+                    <div class="card-header-grey">
+                        <i class="fa-solid fa-soap"></i>
+                        <strong>Rekomendasi Face Wash</strong>
+                    </div>
+                    <div class="table-wrapper-res">
+                        <table id="table-final-facewash">
+                            <thead>
+                                <tr>
+                                    <th width="100">Alternatif</th>
+                                    <th>Nama Produk</th>
+                                    <th width="150">Nilai (V)</th>
+                                    <th width="100">Ranking</th>
+                                </tr>
+                            </thead>
+                            <tbody><!-- Diisi JS --></tbody>
+                        </table>
+                    </div>
+                </div>
 
-    <!-- KATEGORI 2: MOISTURIZER -->
-    <h2 class="category-divider">2. Kategori Moisturizer</h2>
-    <div class="card-container no-padding mb-30">
-        <div class="card-header-grey">
-            <i class="fa-solid fa-droplet"></i>
-            <strong>Rekomendasi Moisturizer</strong>
-        </div>
-        <div class="table-wrapper-res">
-            <table id="table-final-moisturizer">
-                <thead>
-                    <tr>
-                        <th width="100">Alternatif</th>
-                        <th>Nama Produk</th>
-                        <th width="150">Nilai (V)</th>
-                        <th width="100">Ranking</th>
-                    </tr>
-                </thead>
-                <tbody><!-- Diisi JS --></tbody>
-            </table>
-        </div>
-    </div>
+                <!-- KATEGORI 2: MOISTURIZER -->
+                <h2 class="category-divider">2. Kategori Moisturizer</h2>
+                <div class="card-container no-padding mb-30">
+                    <div class="card-header-grey">
+                        <i class="fa-solid fa-droplet"></i>
+                        <strong>Rekomendasi Moisturizer</strong>
+                    </div>
+                    <div class="table-wrapper-res">
+                        <table id="table-final-moisturizer">
+                            <thead>
+                                <tr>
+                                    <th width="100">Alternatif</th>
+                                    <th>Nama Produk</th>
+                                    <th width="150">Nilai (V)</th>
+                                    <th width="100">Ranking</th>
+                                </tr>
+                            </thead>
+                            <tbody><!-- Diisi JS --></tbody>
+                        </table>
+                    </div>
+                </div>
 
-    <!-- KATEGORI 3: SUNSCREEN -->
-    <h2 class="category-divider">3. Kategori Sunscreen</h2>
-    <div class="card-container no-padding mb-30">
-        <div class="card-header-grey">
-            <i class="fa-solid fa-sun"></i>
-            <strong>Rekomendasi Sunscreen</strong>
-        </div>
-        <div class="table-wrapper-res">
-            <table id="table-final-sunscreen">
-                <thead>
-                    <tr>
-                        <th width="100">Alternatif</th>
-                        <th>Nama Produk</th>
-                        <th width="150">Nilai (V)</th>
-                        <th width="100">Ranking</th>
-                    </tr>
-                </thead>
-                <tbody><!-- Diisi JS --></tbody>
-            </table>
-        </div>
-    </div>
-</section>
+                <!-- KATEGORI 3: SUNSCREEN -->
+                <h2 class="category-divider">3. Kategori Sunscreen</h2>
+                <div class="card-container no-padding mb-30">
+                    <div class="card-header-grey">
+                        <i class="fa-solid fa-sun"></i>
+                        <strong>Rekomendasi Sunscreen</strong>
+                    </div>
+                    <div class="table-wrapper-res">
+                        <table id="table-final-sunscreen">
+                            <thead>
+                                <tr>
+                                    <th width="100">Alternatif</th>
+                                    <th>Nama Produk</th>
+                                    <th width="150">Nilai (V)</th>
+                                    <th width="100">Ranking</th>
+                                </tr>
+                            </thead>
+                            <tbody><!-- Diisi JS --></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
 
-    <script src="js/saw.js"></script>
-    <script src="script.js"></script>
+            <script src="js/saw.js"></script>
+            <script src="js/script.js"></script>
 </body>
+
 </html>

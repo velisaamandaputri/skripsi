@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="app-container">
@@ -16,7 +18,10 @@
         <aside class="sidebar">
             <div class="brand-box">
                 <div class="brand-logo"><i class="fa-solid fa-caret-up"></i></div>
-                <div class="brand-name"><h3>Sistem Rekomendasi</h3><p>produk skincare halal</p></div>
+                <div class="brand-name">
+                    <h3>Sistem Rekomendasi</h3>
+                    <p>produk skincare halal</p>
+                </div>
             </div>
             <nav class="nav-menu">
                 <span class="label">DATA</span>
@@ -32,9 +37,11 @@
                     <i class="fa-solid fa-users-gear"></i> Data User
                 </a>
 
-                <a href="riwayat.html" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat Pengguna</a>
-                
-                <div class="nav-logout"><a href="#" class="nav-link btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></div>
+                <a href="riwayat.html" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat
+                    Pengguna</a>
+
+                <div class="nav-logout"><a href="#" class="nav-link btn-logout"><i
+                            class="fa-solid fa-right-from-bracket"></i> Logout</a></div>
             </nav>
         </aside>
 
@@ -42,124 +49,213 @@
         <main class="content-area">
             <header class="topbar">
                 <div class="topbar-left">
-                    <button class="back-circle" onclick="window.location.href='dashboard.html'"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="back-circle" onclick="window.location.href='dashboard.html'"><i
+                            class="fa-solid fa-chevron-left"></i></button>
                     <h2>Dashboard</h2>
                 </div>
                 <div class="topbar-right">
-                    <div class="admin-profile"><div class="avatar-circle">A</div><div class="info"><strong>Admin</strong><small>online</small></div></div>
+                    <div class="admin-profile">
+                        <div class="avatar-circle">A</div>
+                        <div class="info"><strong>Admin</strong><small>online</small></div>
+                    </div>
                 </div>
             </header>
 
             <section class="body-content">
                 <section class="body-content">
-    <div class="header-flex">
-        <div class="header-title">
-            <p class="path">Dashboard > <span>Matriks Perhitungan</span></p>
-            <h1>Matriks Perhitungan SAW</h1>
-        </div>
-    </div>
+                    <div class="header-flex">
+                        <div class="header-title">
+                            <p class="path">Dashboard > <span>Matriks Perhitungan</span></p>
+                            <h1>Matriks Perhitungan SAW</h1>
+                        </div>
+                    </div>
 
-    <!-- ================= KATEGORI 1: FACE WASH ================= -->
-    <h2 class="category-divider">1. Kategori Face Wash</h2>
-    <div class="matrix-group">
-        <!-- Matriks Keputusan X -->
-        <div class="card-container mb-30">
-            <div class="card-header"><div class="left"><strong>Matriks Keputusan (X) - Face Wash</strong></div></div>
-            <div class="table-wrapper">
-                <table id="table-x-facewash">
-                    <thead><tr><th>Alternatif</th><th>C1</th><th>C2</th><th>C3</th><th>C4</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-        <!-- Matriks Normalisasi R -->
-        <div class="card-container mb-30">
-            <div class="card-header"><div class="left"><strong>Matriks Normalisasi (R) - Face Wash</strong></div></div>
-            <div class="table-wrapper">
-                <table id="table-r-facewash">
-                    <thead><tr><th>Alternatif</th><th>rC1</th><th>rC2</th><th>rC3</th><th>rC4</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-        <!-- Hasil Ranking V -->
-        <div class="card-container mb-30">
-            <div class="card-header"><div class="left"><strong>Hasil Preferensi & Ranking - Face Wash</strong></div></div>
-            <div class="table-wrapper">
-                <table id="table-v-facewash">
-                    <thead><tr><th>Alternatif</th><th>Nilai (Vi)</th><th>Ranking</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+                    <!-- ================= KATEGORI 1: FACE WASH ================= -->
+                    <h2 class="category-divider">1. Kategori Face Wash</h2>
+                    <div class="matrix-group">
+                        <!-- Matriks Keputusan X -->
+                        <div class="card-container mb-30">
+                            <div class="card-header">
+                                <div class="left"><strong>Matriks Keputusan (X) - Face Wash</strong></div>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="table-x-facewash">
+                                    <thead>
+                                        <tr>
+                                            <th>Alternatif</th>
+                                            <th>C1</th>
+                                            <th>C2</th>
+                                            <th>C3</th>
+                                            <th>C4</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Matriks Normalisasi R -->
+                        <div class="card-container mb-30">
+                            <div class="card-header">
+                                <div class="left"><strong>Matriks Normalisasi (R) - Face Wash</strong></div>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="table-r-facewash">
+                                    <thead>
+                                        <tr>
+                                            <th>Alternatif</th>
+                                            <th>rC1</th>
+                                            <th>rC2</th>
+                                            <th>rC3</th>
+                                            <th>rC4</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Hasil Ranking V -->
+                        <div class="card-container mb-30">
+                            <div class="card-header">
+                                <div class="left"><strong>Hasil Preferensi & Ranking - Face Wash</strong></div>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="table-v-facewash">
+                                    <thead>
+                                        <tr>
+                                            <th>Alternatif</th>
+                                            <th>Nilai (Vi)</th>
+                                            <th>Ranking</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- ================= KATEGORI 2: MOISTURIZER ================= -->
-    <h2 class="category-divider">2. Kategori Moisturizer</h2>
-    <div class="matrix-group">
-        <div class="card-container mb-30">
-            <div class="card-header"><div class="left"><strong>Matriks Keputusan (X) - Moisturizer</strong></div></div>
-            <div class="table-wrapper">
-                <table id="table-x-moisturizer">
-                    <thead><tr><th>Alternatif</th><th>C1</th><th>C2</th><th>C3</th><th>C4</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-        <div class="card-container mb-30">
-            <div class="card-header"><div class="left"><strong>Matriks Normalisasi (R) - Moisturizer</strong></div></div>
-            <div class="table-wrapper">
-                <table id="table-r-moisturizer">
-                    <thead><tr><th>Alternatif</th><th>rC1</th><th>rC2</th><th>rC3</th><th>rC4</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-        <div class="card-container mb-30">
-            <div class="card-header"><div class="left"><strong>Hasil Preferensi & Ranking - Moisturizer</strong></div></div>
-            <div class="table-wrapper">
-                <table id="table-v-moisturizer">
-                    <thead><tr><th>Alternatif</th><th>Nilai (Vi)</th><th>Ranking</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+                    <!-- ================= KATEGORI 2: MOISTURIZER ================= -->
+                    <h2 class="category-divider">2. Kategori Moisturizer</h2>
+                    <div class="matrix-group">
+                        <div class="card-container mb-30">
+                            <div class="card-header">
+                                <div class="left"><strong>Matriks Keputusan (X) - Moisturizer</strong></div>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="table-x-moisturizer">
+                                    <thead>
+                                        <tr>
+                                            <th>Alternatif</th>
+                                            <th>C1</th>
+                                            <th>C2</th>
+                                            <th>C3</th>
+                                            <th>C4</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-container mb-30">
+                            <div class="card-header">
+                                <div class="left"><strong>Matriks Normalisasi (R) - Moisturizer</strong></div>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="table-r-moisturizer">
+                                    <thead>
+                                        <tr>
+                                            <th>Alternatif</th>
+                                            <th>rC1</th>
+                                            <th>rC2</th>
+                                            <th>rC3</th>
+                                            <th>rC4</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-container mb-30">
+                            <div class="card-header">
+                                <div class="left"><strong>Hasil Preferensi & Ranking - Moisturizer</strong></div>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="table-v-moisturizer">
+                                    <thead>
+                                        <tr>
+                                            <th>Alternatif</th>
+                                            <th>Nilai (Vi)</th>
+                                            <th>Ranking</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- ================= KATEGORI 3: SUNSCREEN ================= -->
-    <h2 class="category-divider">3. Kategori Sunscreen</h2>
-    <div class="matrix-group">
-        <div class="card-container mb-30">
-            <div class="card-header"><div class="left"><strong>Matriks Keputusan (X) - Sunscreen</strong></div></div>
-            <div class="table-wrapper">
-                <table id="table-x-sunscreen">
-                    <thead><tr><th>Alternatif</th><th>C1</th><th>C2</th><th>C3</th><th>C4</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-        <div class="card-container mb-30">
-            <div class="card-header"><div class="left"><strong>Matriks Normalisasi (R) - Sunscreen</strong></div></div>
-            <div class="table-wrapper">
-                <table id="table-r-sunscreen">
-                    <thead><tr><th>Alternatif</th><th>rC1</th><th>rC2</th><th>rC3</th><th>rC4</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-        <div class="card-container mb-30">
-            <div class="card-header"><div class="left"><strong>Hasil Preferensi & Ranking - Sunscreen</strong></div></div>
-            <div class="table-wrapper">
-                <table id="table-v-sunscreen">
-                    <thead><tr><th>Alternatif</th><th>Nilai (Vi)</th><th>Ranking</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</section>
+                    <!-- ================= KATEGORI 3: SUNSCREEN ================= -->
+                    <h2 class="category-divider">3. Kategori Sunscreen</h2>
+                    <div class="matrix-group">
+                        <div class="card-container mb-30">
+                            <div class="card-header">
+                                <div class="left"><strong>Matriks Keputusan (X) - Sunscreen</strong></div>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="table-x-sunscreen">
+                                    <thead>
+                                        <tr>
+                                            <th>Alternatif</th>
+                                            <th>C1</th>
+                                            <th>C2</th>
+                                            <th>C3</th>
+                                            <th>C4</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-container mb-30">
+                            <div class="card-header">
+                                <div class="left"><strong>Matriks Normalisasi (R) - Sunscreen</strong></div>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="table-r-sunscreen">
+                                    <thead>
+                                        <tr>
+                                            <th>Alternatif</th>
+                                            <th>rC1</th>
+                                            <th>rC2</th>
+                                            <th>rC3</th>
+                                            <th>rC4</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-container mb-30">
+                            <div class="card-header">
+                                <div class="left"><strong>Hasil Preferensi & Ranking - Sunscreen</strong></div>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="table-v-sunscreen">
+                                    <thead>
+                                        <tr>
+                                            <th>Alternatif</th>
+                                            <th>Nilai (Vi)</th>
+                                            <th>Ranking</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-    <script src="js/saw.js"></script>
-    <script src="script.js"></script>
+                <script src="js/saw.js"></script>
+                <script src="js/script.js"></script>
 </body>
+
 </html>

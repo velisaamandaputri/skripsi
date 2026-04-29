@@ -19,34 +19,87 @@ async function hitungSAW(kategori) {
                 parseFloat(p.C1) || 0,
                 parseFloat(p.C2) || 0,
                 parseFloat(p.C3) || 0,
-                parseFloat(p.C4) || 0
+                parseFloat(p.C4) || 0,
+                parseFloat(p.C5) || 0,
+                parseFloat(p.C6) || 0,
+                parseFloat(p.C7) || 0
             ]
         };
     });
 
-    // 4. Cari Nilai Max (Normalisasi)
+    console.log(`\n========== PERHITUNGAN SAW KATEGORI: ${kategori.toUpperCase()} ==========`);
+    console.log('\n1. MATRIKS KEPUTUSAN (X) - Data Asli:');
+    console.table(matrixX.map(m => ({
+        Kode: m.kode,
+        Nama: m.nama,
+        C1: m.vals[0],
+        C2: m.vals[1],
+        C3: m.vals[2],
+        C4: m.vals[3],
+        C5: m.vals[4],
+        C6: m.vals[5],
+        C7: m.vals[6]
+    })));
+
+    // 4. Cari Nilai Max dan Min untuk Normalisasi
     const maxValues = [
         Math.max(...matrixX.map(m => m.vals[0])) || 1,
         Math.max(...matrixX.map(m => m.vals[1])) || 1,
         Math.max(...matrixX.map(m => m.vals[2])) || 1,
-        Math.max(...matrixX.map(m => m.vals[3])) || 1
+        Math.max(...matrixX.map(m => m.vals[3])) || 1,
+        Math.max(...matrixX.map(m => m.vals[4])) || 1,
+        Math.max(...matrixX.map(m => m.vals[5])) || 1,
+        Math.max(...matrixX.map(m => m.vals[6])) || 1
     ];
 
+    const minValues = [
+        Math.min(...matrixX.map(m => m.vals[0])) || 1,
+        Math.min(...matrixX.map(m => m.vals[1])) || 1,
+        Math.min(...matrixX.map(m => m.vals[2])) || 1,
+        Math.min(...matrixX.map(m => m.vals[3])) || 1,
+        Math.min(...matrixX.map(m => m.vals[4])) || 1,
+        Math.min(...matrixX.map(m => m.vals[5])) || 1,
+        Math.min(...matrixX.map(m => m.vals[6])) || 1
+    ];
+
+    console.log('\n2. NILAI MAKSIMUM & MINIMUM SETIAP KRITERIA:');
+    console.table({
+        'C1 (Kandungan Bahan)': { Max: maxValues[0], Min: minValues[0], Type: 'Benefit' },
+        'C2 (Label Halal)': { Max: maxValues[1], Min: minValues[1], Type: 'Benefit' },
+        'C3 (Daftar BPOM)': { Max: maxValues[2], Min: minValues[2], Type: 'Benefit' },
+        'C4 (Keamanan Bahan)': { Max: maxValues[3], Min: minValues[3], Type: 'Benefit' },
+        'C5 (Permasalahan Kulit)': { Max: maxValues[4], Min: minValues[4], Type: 'Benefit' },
+        'C6 (Jenis Kulit)': { Max: maxValues[5], Min: minValues[5], Type: 'Benefit' },
+        'C7 (Usia)': { Max: maxValues[6], Min: minValues[6], Type: 'Cost ⚠️' }
+    });
+
     // 5. Ambil Bobot W dari Database
-    // Pastikan urutan bobot di DB sesuai dengan C1, C2, C3, C4
     const W = dbKrit.map(k => parseFloat(k.bobot) || 0);
 
-    // 6. Hitung V (Preferensi)
+    console.log('\n3. BOBOT KRITERIA (W):');
+    console.table(dbKrit.map((k, i) => ({
+        Kriteria: k.kode,
+        Nama: k.nama,
+        Bobot: W[i].toFixed(2)
+    })));
+
+    // 6. Hitung Nilai Ternormalisasi (R)
+    // C1-C6: Benefit (semakin tinggi semakin baik) → R = X / Max
+    // C7: Cost (semakin rendah semakin baik) → R = Min / X
     let results = matrixX.map(m => {
         const r = [
-            m.vals[0] / maxValues[0],
-            m.vals[1] / maxValues[1],
-            m.vals[2] / maxValues[2],
-            m.vals[3] / maxValues[3]
+            m.vals[0] / maxValues[0],                    // C1: Benefit
+            m.vals[1] / maxValues[1],                    // C2: Benefit
+            m.vals[2] / maxValues[2],                    // C3: Benefit
+            m.vals[3] / maxValues[3],                    // C4: Benefit
+            m.vals[4] / maxValues[4],                    // C5: Benefit
+            m.vals[5] / maxValues[5],                    // C6: Benefit
+            m.vals[6] > 0 ? minValues[6] / m.vals[6] : 0 // C7: Cost (rumus terbalik)
         ];
 
         // Perhitungan SAW: (r * W)
-        const v = (r[0] * W[0]) + (r[1] * W[1]) + (r[2] * W[2]) + (r[3] * W[3]);
+        const v = (r[0] * W[0]) + (r[1] * W[1]) + (r[2] * W[2]) + (r[3] * W[3]) +
+            (r[4] * W[4]) + (r[5] * W[5]) + (r[6] * W[6]);
 
         return {
             ...m,
@@ -55,7 +108,41 @@ async function hitungSAW(kategori) {
         };
     });
 
-    return results.sort((a, b) => b.vi - a.vi);
+    console.log('\n4. MATRIKS TERNORMALISASI (R) - Hasil Normalisasi:');
+    console.log('   📌 C1-C6: Benefit (R = X/Max) | C7: Cost (R = Min/X)');
+    console.table(results.map(res => ({
+        Kode: res.kode,
+        Nama: res.nama,
+        'R1 (C1/Max)': res.r[0].toFixed(4),
+        'R2 (C2/Max)': res.r[1].toFixed(4),
+        'R3 (C3/Max)': res.r[2].toFixed(4),
+        'R4 (C4/Max)': res.r[3].toFixed(4),
+        'R5 (C5/Max)': res.r[4].toFixed(4),
+        'R6 (C6/Max)': res.r[5].toFixed(4),
+        'R7 (Min/C7) ⚠️': res.r[6].toFixed(4)
+    })));
+
+    console.log('\n5. PERHITUNGAN NILAI PREFERENSI (V):');
+    results.forEach(res => {
+        const detail = res.r.map((r, i) => `(${r.toFixed(4)} × ${W[i]})`).join(' + ');
+        console.log(`${res.kode} - ${res.nama}:`);
+        console.log(`  V = ${detail}`);
+        console.log(`  V = ${res.vi.toFixed(4)}`);
+    });
+
+    const sortedResults = results.sort((a, b) => b.vi - a.vi);
+
+    console.log('\n6. RANKING AKHIR (Terurut dari Tertinggi):');
+    console.table(sortedResults.map((res, index) => ({
+        Ranking: index + 1,
+        Kode: res.kode,
+        Nama: res.nama,
+        'Nilai Preferensi (V)': res.vi.toFixed(4)
+    })));
+
+    console.log(`\n========== SELESAI PERHITUNGAN ${kategori.toUpperCase()} ==========\n`);
+
+    return sortedResults;
 }
 
 /**
@@ -175,7 +262,7 @@ async function renderHasilAkhir(kategori, idTabel) {
     if (!tbody) return;
 
     try {
-        const results = await hitungSAW(kategori); 
+        const results = await hitungSAW(kategori);
         const filterUser = JSON.parse(localStorage.getItem('user_filter'));
 
         if (!filterUser) return;
@@ -215,11 +302,18 @@ async function renderHasilAkhir(kategori, idTabel) {
 
 // Jalankan fungsi saat halaman dimuat
 document.addEventListener('DOMContentLoaded', () => {
-    // Jalankan render jika tabel ada di halaman tersebut
+    // Jalankan render jika tabel ada di halaman tersebut (untuk admin)
     if (document.getElementById('table-final-facewash')) {
         renderHasilAkhir('facewash', 'table-final-facewash');
         renderHasilAkhir('moisturizer', 'table-final-moisturizer');
         renderHasilAkhir('sunscreen', 'table-final-sunscreen');
+    }
+
+    // Jalankan render jika tabel ada di halaman hasil-rekomendasi-user.html
+    if (document.getElementById('tabel-hasil-user-facewash')) {
+        renderHasilAkhir('facewash', 'tabel-hasil-user-facewash');
+        renderHasilAkhir('moisturizer', 'tabel-hasil-user-moisturizer');
+        renderHasilAkhir('sunscreen', 'tabel-hasil-user-sunscreen');
     }
 });
 
@@ -256,22 +350,24 @@ async function renderHasilRekomendasiBeranda() {
 
     // 3. Jalankan Perhitungan & Render untuk 3 Kategori dari Database
     // Kita gunakan kategori yang sesuai dengan API (facewash, moisturizer, sunscreen)
-    renderHasilAkhir('facewash', 'tabel-beranda-facewash');
-    renderHasilAkhir('moisturizer', 'tabel-beranda-moisturizer');
-    renderHasilAkhir('sunscreen', 'tabel-beranda-sunscreen');
+    renderHasilAkhirBeranda('facewash', 'tabel-beranda-facewash');
+    renderHasilAkhirBeranda('moisturizer', 'tabel-beranda-moisturizer');
+    renderHasilAkhirBeranda('sunscreen', 'tabel-beranda-sunscreen');
 }
 
 /**
- * FUNGSI HELPER: renderHasilAkhir 
- * (Pastikan fungsi ini ada di js/saw.js Anda seperti yang kita bahas sebelumnya)
+ * FUNGSI HELPER: renderHasilAkhirBeranda
+ * Khusus untuk beranda user (hanya 4 kolom, top 3)
  */
-async function renderHasilAkhir(kategori, idTabel) {
+async function renderHasilAkhirBeranda(kategori, idTabel) {
     const tbody = document.querySelector(`#${idTabel} tbody`);
     if (!tbody) return;
 
     try {
         const results = await hitungSAW(kategori);
         const filterUser = JSON.parse(localStorage.getItem('user_filter'));
+
+        if (!filterUser) return;
 
         // Filter berdasarkan tipe kulit user
         const filtered = results.filter(p =>

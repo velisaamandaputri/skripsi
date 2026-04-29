@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="app-container">
         <!-- SIDEBAR -->
@@ -26,10 +28,12 @@
                 <a href="alternatif.html" class="nav-link"><i class="fa-solid fa-address-book"></i> Data Alternatif</a>
                 <a href="penilaian.html" class="nav-link"><i class="fa-solid fa-square-poll-vertical"></i> Penilaian</a>
                 <a href="matriks.html" class="nav-link"><i class="fa-solid fa-table"></i> Matriks Perhitungan</a>
-                <a href="hasil-rekomendasi.html" class="nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Hasil Rekomendasi</a>
+                <a href="hasil-rekomendasi.html" class="nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Hasil
+                    Rekomendasi</a>
                 <a href="user.html" class="nav-link"><i class="fa-solid fa-users-gear"></i> Data User</a>
-                <a href="riwayat.html" class="nav-link active"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat Pengguna</a>
-                
+                <a href="riwayat.html" class="nav-link active"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat
+                    Pengguna</a>
+
                 <div class="nav-logout">
                     <a href="#" class="nav-link btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                 </div>
@@ -39,11 +43,15 @@
         <main class="content-area">
             <header class="topbar">
                 <div class="topbar-left">
-                    <button class="back-circle" onclick="window.location.href='dashboard.html'"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="back-circle" onclick="window.location.href='dashboard.html'"><i
+                            class="fa-solid fa-chevron-left"></i></button>
                     <h2>Dashboard</h2>
                 </div>
                 <div class="topbar-right">
-                    <div class="admin-profile"><div class="avatar-circle">A</div><div class="info"><strong>Admin</strong><small>online</small></div></div>
+                    <div class="admin-profile">
+                        <div class="avatar-circle">A</div>
+                        <div class="info"><strong>Admin</strong><small>online</small></div>
+                    </div>
                 </div>
             </header>
 
@@ -54,14 +62,17 @@
                         <h1>Riwayat Input Pengguna</h1>
                         <p class="subtitle">Log aktivitas profil kulit yang dimasukkan oleh semua pengguna sistem.</p>
                     </div>
-                    <button class="btn-logout" style="background-color: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: bold;" onclick="bersihkanRiwayat()">
+                    <button class="btn-logout"
+                        style="background-color: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: bold;"
+                        onclick="bersihkanRiwayat()">
                         <i class="fa-solid fa-trash-can"></i> Bersihkan Riwayat
                     </button>
                 </div>
 
                 <div class="card-container">
                     <div class="card-header">
-                        <div class="left"><strong>Log Aktivitas</strong><small>Admin melihat semua penginput</small></div>
+                        <div class="left"><strong>Log Aktivitas</strong><small>Admin melihat semua penginput</small>
+                        </div>
                         <div class="right" id="total-riwayat">Total: 0 data</div>
                     </div>
                     <div class="table-wrapper">
@@ -87,17 +98,18 @@
         </main>
     </div>
     <script src="js/riwayat.js"></script>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
     <script>
         // Jalankan fungsi render saat halaman dibuka
         document.addEventListener('DOMContentLoaded', renderRiwayatAdmin);
 
         function bersihkanRiwayat() {
-            if(confirm("Hapus semua riwayat data dari semua pengguna?")) {
+            if (confirm("Hapus semua riwayat data dari semua pengguna?")) {
                 localStorage.removeItem('db_riwayat');
                 renderRiwayatAdmin();
             }
         }
     </script>
 </body>
+
 </html>

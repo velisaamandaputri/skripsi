@@ -30,10 +30,10 @@
                 <a href="alternatif.html" class="nav-link"><i class="fa-solid fa-address-book"></i> Data Alternatif</a>
                 <a href="penilaian.html" class="nav-link active"><i class="fa-solid fa-square-poll-vertical"></i>
                     Penilaian</a>
-                <a href="matriks.html" class="nav-link"><i class="fa-solid fa-table"></i> Matriks Perhitungan</a>
+                <!-- <a href="matriks.html" class="nav-link"><i class="fa-solid fa-table"></i> Matriks Perhitungan</a>
                 <a href="hasil-rekomendasi.html" class="nav-link">
                     <i class="fa-solid fa-wand-magic-sparkles"></i> Hasil Rekomendasi
-                </a>
+                </a> -->
                 <a href="user.html" class="nav-link">
                     <i class="fa-solid fa-users-gear"></i> Data User
                 </a>
@@ -126,6 +126,44 @@
                             </select>
                         </div>
 
+                        <!-- C5 Permasalahan Kulit -->
+                        <div class="input-group">
+                            <label>C5 – Permasalahan Kulit</label>
+                            <select id="edit_C5" class="score-input" data-krit="C5" required>
+                                <option value="" disabled>..Pilih..</option>
+                                <option value="100">Jerawat (100)</option>
+                                <option value="80">Skin Barrier (80)</option>
+                                <option value="60">Pori-Pori dan Komedo (60)</option>
+                                <option value="40">Flek / Melasma (40)</option>
+                                <option value="20">Kulit Kusam (20)</option>
+                            </select>
+                        </div>
+
+                        <!-- C6 Jenis Kulit -->
+                        <div class="input-group">
+                            <label>C6 – Jenis Kulit</label>
+                            <select id="edit_C6" class="score-input" data-krit="C6" required>
+                                <option value="" disabled>..Pilih..</option>
+                                <option value="100">Kulit Sensitif (100)</option>
+                                <option value="80">Kulit Kombinasi (80)</option>
+                                <option value="60">Kulit Kering (60)</option>
+                                <option value="40">Kulit Berminyak (40)</option>
+                                <option value="20">Kulit Normal (20)</option>
+                            </select>
+                        </div>
+
+                        <!-- C7 Usia -->
+                        <div class="input-group">
+                            <label>C7 – Usia</label>
+                            <select id="edit_C7" class="score-input" data-krit="C7" required>
+                                <option value="" disabled>..Pilih..</option>
+                                <option value="25">12 th - 17 th (25)</option>
+                                <option value="50">17 th - 21 th (50)</option>
+                                <option value="75">21 th - 31 th (75)</option>
+                                <option value="100">31 th - 60 th (100)</option>
+                            </select>
+                        </div>
+
                         <div class="form-action-footer">
                             <button type="button" class="btn-batal" onclick="window.location.href='penilaian.html'"><i
                                     class="fa-solid fa-xmark"></i> Batal</button>
@@ -139,7 +177,7 @@
     </div>
 
     <script src="js/penilaian.js"></script>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
