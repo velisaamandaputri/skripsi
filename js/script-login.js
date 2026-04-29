@@ -26,7 +26,12 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
         })
         .then(data => {
             if (data.status === "success") {
-                alert("Login berhasil ANjayyyyy!");
+                alert("Login berhasil!");
+
+                // Simpan session user ke localStorage
+                localStorage.setItem('currentUser', data.username);
+                localStorage.setItem('currentUserId', data.user_id);
+                localStorage.setItem('currentUserRole', data.role);
 
                 if (data.role === 'admin') {
                     window.location.href = "dashboard.html";

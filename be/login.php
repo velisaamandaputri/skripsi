@@ -42,12 +42,15 @@ $user = mysqli_fetch_assoc($result);
 
 if ($user) {
     $_SESSION['login'] = true;
+    $_SESSION['user_id'] = $user['id'];
     $_SESSION['user'] = $user['nama'];
     $_SESSION['role'] = $user['role'];
 
     echo json_encode([
         "status" => "success",
-        "role" => $user['role']
+        "role" => $user['role'],
+        "user_id" => $user['id'],
+        "username" => $user['nama']
     ]);
 } else {
     echo json_encode([

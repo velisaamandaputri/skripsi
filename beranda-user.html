@@ -138,12 +138,12 @@
                     <table id="tabel-beranda-sunscreen">
                         <thead>
                             <tr>
-                                <th>Kode</th>
-                                <th>Umur</th>
-                                <th>Type Kulit</th>
-                                <th>Permasalahan</th>
-                                <th>Merek</th>
-                                <th>Rank</th>
+                                <th width="80">KODE</th>
+                                <th width="100">UMUR</th>
+                                <th width="150">TYPE KULIT</th>
+                                <th>PERMASALAHAN</th>
+                                <th>MEREK (NAMA PRODUK)</th>
+                                <th width="100">RANK</th>
                             </tr>
                         </thead>
                         <tbody><!-- Diisi JS --></tbody>
@@ -155,10 +155,15 @@
                 masukkan.</p>
 
             <script src="js/saw.js"></script>
+            <script src="js/user-session.js"></script>
             <script src="js/riwayat.js"></script>
             <script src="js/script.js"></script>
             <script>
-                document.addEventListener('DOMContentLoaded', () => {
+                document.addEventListener('DOMContentLoaded', async () => {
+                    // Load filter user dari database terlebih dahulu
+                    await loadFilterUserFromDatabase();
+
+                    // Setelah data filter siap, baru render tabel
                     renderHasilRekomendasiBeranda();
                 });
             </script>

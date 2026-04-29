@@ -137,30 +137,12 @@
                 </div>
             </div>
 
+            <script src="js/user-session.js"></script>
             <script src="js/riwayat.js"></script>
             <script src="js/saw.js"></script>
             <script src="js/script.js"></script>
 
-            <!-- 2. Logika Lokal Halaman -->
-            <!-- <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    // Ambil data filter yang dipilih user di halaman mulai-rekomendasi.html
-                    const f = JSON.parse(localStorage.getItem('user_filter'));
-
-                    if (f) {
-                        // Update teks deskripsi sesuai input user
-                        document.getElementById('info-filter-user').innerHTML =
-                            `Rekomendasi produk terbaik untuk jenis kelamin <b>${f.jk}</b>, usia <b>${f.usia}</b>, dengan tipe kulit <b>${f.tipe_kulit}</b>, dan Permasalahan Kulit <b>${f.Permasalahan}.`;
-                    }
-
-                    // Jalankan fungsi hitung SAW & Filter yang ada di script.js
-                    if (typeof renderHasilRekomendasiUser === "function") {
-                        renderHasilRekomendasiUser();
-                    } else {
-                        console.error("Fungsi renderHasilRekomendasiUser tidak ditemukan di script.js");
-                    }
-                });
-            </script> -->
+           
 </body>
 
 </html>

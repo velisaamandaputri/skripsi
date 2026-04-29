@@ -357,42 +357,65 @@ async function renderHasilRekomendasiBeranda() {
 
 /**
  * FUNGSI HELPER: renderHasilAkhirBeranda
- * Khusus untuk beranda user (hanya 4 kolom, top 3)
+ * Khusus untuk beranda user (6 kolom, top 3)
  */
 async function renderHasilAkhirBeranda(kategori, idTabel) {
     const tbody = document.querySelector(`#${idTabel} tbody`);
-    if (!tbody) return;
+    if (!tbody) {
+        console.warn(`Tabel dengan ID ${idTabel} tidak ditemukan`);
+        return;
+    }
 
     try {
         const results = await hitungSAW(kategori);
         const filterUser = JSON.parse(localStorage.getItem('user_filter'));
 
-        if (!filterUser) return;
+        console.log(`\n📊 RENDER BERANDA - Kategori: ${kategori.toUpperCase()}`);
+        console.log('Filter User:', filterUser);
+        console.log('Total Products:', results.length);
+
+        if (!filterUser) {
+            tbody.innerHTML = '<tr><td colspan="6" class="center">Silakan isi data rekomendasi terlebih dahulu.</td></tr>';
+            return;
+        }
 
         // Filter berdasarkan tipe kulit user
         const filtered = results.filter(p =>
             p.kulit.toLowerCase() === filterUser.tipe_kulit.toLowerCase()
         );
 
+        console.log('Filtered Products:', filtered.length);
+
         if (filtered.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="4" class="center">Tidak ada produk yang cocok.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="6" class="center">Tidak ada produk yang cocok.</td></tr>';
             return;
         }
 
         // Tampilkan hanya Top 3 saja di Beranda agar tidak terlalu penuh
         const top3 = filtered.slice(0, 3);
 
+        console.log('Top 3 Products:', top3.map(p => ({ kode: p.kode, nama: p.nama, vi: p.vi })));
+
         tbody.innerHTML = top3.map((res, index) => `
             <tr>
                 <td class="center">A${res.kode.replace(/\D/g, '')}</td>
+                <td class="center">${filterUser.usia} Th</td>
+                <td class="center">${filterUser.tipe_kulit}</td>
+                <td>${filterUser.masalah || filterUser.Permasalahan || '-'}</td>
                 <td><strong>${res.nama}</strong></td>
-                <td class="center">${res.vi.toFixed(3)}</td>
-                <td class="center"><span class="badge-rank">#${index + 1}</span></td>
+                <td class="center">
+                    <span class="badge-rank" style="background: #ff9a9e; color: white; padding: 4px 10px; border-radius: 12px; font-weight: bold;">
+                        #${index + 1}
+                    </span>
+                </td>
             </tr>
         `).join('');
 
+        console.log(`✅ Berhasil render ${top3.length} produk untuk tabel ${idTabel}`);
+
     } catch (error) {
-        console.error(`Gagal render beranda kategori ${kategori}:`, error);
+        console.error(`❌ Gagal render beranda kategori ${kategori}:`, error);
+        tbody.innerHTML = '<tr><td colspan="6" class="center">Terjadi kesalahan saat memuat data.</td></tr>';
     }
 }
 
