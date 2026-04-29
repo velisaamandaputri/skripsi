@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Kriteria - SAW Skincare</title>
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand-box">
+                <div class="brand-logo"><i class="fa-solid fa-caret-up"></i></div>
+                <div class="brand-name">
+                    <h3>Sistem Rekomendasi</h3>
+                    <p>produk skincare halal</p>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <span class="label">DATA</span>
+                <a href="dashboard.html" class="nav-link">
+                    <i class="fa-solid fa-table-cells-large"></i> Dasboard
+                </a>
+                <a href="kriteria.html" class="nav-link active">
+                    <i class="fa-solid fa-list-ul"></i> Data Kriteria
+                </a>
+                <a href="alternatif.html" class="nav-link">
+                    <i class="fa-solid fa-address-book"></i> Data Alternatif
+                </a>
+                <a href="penilaian.html" class="nav-link">
+                    <i class="fa-solid fa-square-poll-vertical"></i> Penilaian
+                </a>
+                <a href="matriks.html" class="nav-link">
+                    <i class="fa-solid fa-table"></i> Matriks Perhitungan
+                </a>
+                <a href="hasil-rekomendasi.html" class="nav-link">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Hasil Rekomendasi
+                </a>
+                <a href="user.html" class="nav-link">
+                    <i class="fa-solid fa-users-gear"></i> Data User
+                </a>
+
+                <a href="riwayat.html" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat Pengguna</a>
+                
+                <div class="nav-logout">
+                    <a href="#" class="nav-link btn-logout">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="content-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="back-circle" onclick="window.location.href='dashboard.html'"><i class="fa-solid fa-chevron-left"></i></button>
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="topbar-right">
+                    <div class="admin-profile">
+                        <div class="avatar-circle">A</div>
+                        <div class="info"><strong>Admin</strong><small>online</small></div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="body-content">
+                <div class="header-flex">
+                    <div class="header-title">
+                        <p class="path">Dashboard > <span>Data Kriteria</span></p>
+                        <h1>Data Kriteria</h1>
+                        <p class="subtitle">Kriteria penilaian untuk rekomendasi produk skincare halal (metode SAW).</p>
+                    </div>
+                    <!-- TOMBOL TAMBAH -->
+                    <button class="btn-green" onclick="window.location.href='tambah-kriteria.html'">
+                        <i class="fa-solid fa-plus"></i> Tambah Kriteria
+                    </button>
+                </div>
+
+                <div class="card-container">
+                    <div class="card-header">
+                        <div class="left">
+                            <strong>Data Kriteria</strong>
+                            <small>Atur kriteria, tipe, dan bobot</small>
+                        </div>
+                        <!-- ID total-kriteria agar angka berubah otomatis -->
+                        <div class="right" id="total-kriteria">
+                            <i class="fa-solid fa-list-check"></i> Total: 0 kriteria
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="50">NO</th>
+                                    <th>Kode Kriteria</th>
+                                    <th>Nama Kriteria</th>
+                                    <th>Type</th>
+                                    <th>Bobot Kriteria</th>
+                                    <th width="120">Aksi</th>
+                                </tr>
+                            </thead>
+                            <!-- ID tabel-body-kriteria sangat penting untuk script.js -->
+                            <tbody id="tabel-body-kriteria">
+                                <!-- Bagian ini akan diisi otomatis oleh JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/kriteria.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Rekomendasi - SAW Skincare</title>
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="user-body">
+
+    <div class="app-container">
+        <!-- SIDEBAR USER -->
+        <aside class="sidebar-user">
+            <div class="brand-user">
+                <div class="brand-icon-white">
+                    <i class="fa-solid fa-bottle-droplet" style="color: #ff9a9e;"></i>
+                </div>
+                <div class="brand-text">
+                    <h3>Sistem Rekomendasi</h3>
+                    <p>produk skincare halal</p>
+                </div>
+            </div>
+
+            <nav class="nav-user">
+                <a href="beranda-user.html" class="nav-link-user">
+                    <span class="icon">🏠</span> Beranda
+                </a>
+                <a href="mulai-rekomendasi.html" class="nav-link-user">
+                    <span class="icon">➕</span> Mulai Rekomendasi
+                </a>
+                <a href="hasil-rekomendasi-user.html" class="nav-link-user active">
+                    <span class="icon">💡</span> Hasil Rekomendasi
+                </a>
+            </nav>
+
+            <div class="logout-container-user">
+                <button class="btn-logout-card" onclick="window.location.href='index.html'">
+                    Logout <i class="fa-solid fa-arrow-right-long"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="content-area-user">
+            <!-- TOPBAR USER -->
+            <header class="user-topbar">
+                <div class="topbar-left">
+                    <button class="back-circle-user" onclick="window.location.href='beranda-user.html'">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <h2 class="user-name-title">Velisa Amanda Putri</h2>
+                </div>
+                <div class="topbar-right">
+                    <div class="user-profile-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- JUDUL HALAMAN (HERO SECTION DENGAN INFO DINAMIS) -->
+            <!-- Cari bagian <div class="card-user-result"> di hasil-rekomendasi-user.html dan ganti dengan ini -->
+
+            <!-- KATEGORI 1: FACE WASH -->
+            <!-- KATEGORI 1: FACE WASH -->
+            <div class="card-user-result">
+                <div class="card-header-grey-user">
+                    <i class="fa-solid fa-soap"></i>
+                    <strong>Hasil Rekomendasi Face Wash</strong>
+                </div>
+                <div class="table-container-user">
+                    <table id="tabel-hasil-user-facewash">
+                        <thead>
+                            <tr>
+                                <th>KODE</th>
+                                <th>UMUR</th>
+                                <th>TYPE KULIT</th>
+                                <th>PERMASALAHAN</th>
+                                <th>MEREK (NAMA PRODUK)</th>
+                                <th>RANK</th>
+                            </tr>
+                        </thead>
+                        <tbody><!-- Diisi otomatis oleh script.js --></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- KATEGORI 2: MOISTURIZER -->
+            <div class="card-user-result">
+                <div class="card-header-grey-user">
+                    <i class="fa-solid fa-droplet"></i>
+                    <strong>Hasil Rekomendasi Moisturizer</strong>
+                </div>
+                <div class="table-container-user">
+                    <table id="tabel-hasil-user-moisturizer">
+                        <thead>
+                            <tr>
+                                <th>KODE</th>
+                                <th>UMUR</th>
+                                <th>TYPE KULIT</th>
+                                <th>PERMASALAHAN</th>
+                                <th>MEREK (NAMA PRODUK)</th>
+                                <th>RANK</th>
+                            </tr>
+                        </thead>
+                        <tbody><!-- Diisi JS --></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- KATEGORI 3: SUNSCREEN -->
+            <div class="card-user-result">
+                <div class="card-header-grey-user">
+                    <i class="fa-solid fa-sun"></i>
+                    <strong>Hasil Rekomendasi Sunscreen</strong>
+                </div>
+                <div class="table-container-user">
+                    <table id="tabel-hasil-user-sunscreen">
+                        <thead>
+                            <tr>
+                                <th>KODE</th>
+                                <th>UMUR</th>
+                                <th>TYPE KULIT</th>
+                                <th>PERMASALAHAN</th>
+                                <th>MEREK (NAMA PRODUK)</th>
+                                <th>RANK</th>
+                            </tr>
+                        </thead>
+                        <tbody><!-- Diisi JS --></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <script src="js/riwayat.js"></script>
+            <script src="js/saw.js"></script>
+            <script src="script.js"></script>
+
+            <!-- 2. Logika Lokal Halaman -->
+            <!-- <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    // Ambil data filter yang dipilih user di halaman mulai-rekomendasi.html
+                    const f = JSON.parse(localStorage.getItem('user_filter'));
+
+                    if (f) {
+                        // Update teks deskripsi sesuai input user
+                        document.getElementById('info-filter-user').innerHTML =
+                            `Rekomendasi produk terbaik untuk jenis kelamin <b>${f.jk}</b>, usia <b>${f.usia}</b>, dengan tipe kulit <b>${f.tipe_kulit}</b>, dan Permasalahan Kulit <b>${f.Permasalahan}.`;
+                    }
+
+                    // Jalankan fungsi hitung SAW & Filter yang ada di script.js
+                    if (typeof renderHasilRekomendasiUser === "function") {
+                        renderHasilRekomendasiUser();
+                    } else {
+                        console.error("Fungsi renderHasilRekomendasiUser tidak ditemukan di script.js");
+                    }
+                });
+            </script> -->
+</body>
+
+</html>

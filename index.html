@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistem Rekomendasi Skincare Halal</title>
+    <!-- Font Inter untuk tampilan profesional -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+    <!-- HEADER ATAS (Tagline dengan Lingkaran Putih sesuai Gambar) -->
+    <header class="top-tagline-bar">
+        <div class="logo-placeholder-circle"></div>
+        <p>Sistem Rekomendasi Produk Skincare Halal Berdasarkan Bahan Metode SAW</p>
+    </header>
+
+    <!-- Ornamen Lingkaran Dekorasi Background -->
+    <div class="circle circle-top"></div>
+    <div class="circle circle-bottom"></div>
+
+    <div class="login-container">
+        <div class="login-main">
+            <!-- SISI KIRI: Judul Besar -->
+            <div class="login-branding">
+                <h1>Sistem <br> Rekomendasi <br> Produk Skincare <br> Halal</h1>
+            </div>
+
+            <!-- SISI KANAN: Card Login (Warna Abu-abu) -->
+            <div class="login-card">
+                <form id="loginForm">
+                    <div class="input-group">
+                        <input type="text" id="username" placeholder="USERNAME" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="password" placeholder="PASSWORD" required>
+                    </div>
+
+                    <div class="login-action-buttons">
+                        <button type="button" class="btn-signup" onclick="window.location.href='signup.html'">Sign Up</button>
+                        <button type="submit" class="btn-login">Login</button>
+                    </div>
+
+                    <p class="dummy-info">
+                        Dummy: <strong>admin/admin123</strong> atau <strong>user/user123</strong>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script untuk logika login -->
+    <script src="script-login.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Penilaian - SAW Skincare</title>
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand-box">
+                <div class="brand-logo"><i class="fa-solid fa-caret-up"></i></div>
+                <div class="brand-name">
+                    <h3>Sistem Rekomendasi</h3>
+                    <p>produk skincare halal</p>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <span class="label">DATA</span>
+                <a href="dashboard.html" class="nav-link"><i class="fa-solid fa-table-cells-large"></i> Dasboard</a>
+                <a href="kriteria.html" class="nav-link"><i class="fa-solid fa-list-ul"></i> Data Kriteria</a>
+                <a href="alternatif.html" class="nav-link"><i class="fa-solid fa-address-book"></i> Data Alternatif</a>
+                <a href="penilaian.html" class="nav-link active"><i class="fa-solid fa-square-poll-vertical"></i> Penilaian</a>
+                <a href="matriks.html" class="nav-link"><i class="fa-solid fa-table"></i> Matriks Perhitungan</a>
+                <a href="hasil-rekomendasi.html" class="nav-link">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Hasil Rekomendasi
+                </a>
+                <a href="user.html" class="nav-link">
+                    <i class="fa-solid fa-users-gear"></i> Data User
+                </a>
+                <a href="riwayat.html" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat Pengguna</a>
+                <div class="nav-logout">
+                    <a href="#" class="nav-link btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="content-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="back-circle" onclick="window.location.href='penilaian.html'"><i class="fa-solid fa-chevron-left"></i></button>
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="topbar-right">
+                    <div class="admin-profile">
+                        <div class="avatar-circle">A</div>
+                        <div class="info"><strong>Admin</strong><small>online</small></div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="body-content">
+                <div class="header-flex">
+                    <div class="header-title">
+                        <p class="path">Dashboard > Penilaian > <span>Tambah</span></p>
+                        <h1>Tambah Penilaian</h1>
+                        <p class="subtitle" id="label-produk-pilihan">Produk: Pilih Produk Terlebih Dahulu</p>
+                    </div>
+                </div>
+
+                <!-- Form Card -->
+                <div class="card-container form-card">
+                    <div class="card-header">
+                        <div class="left"><strong>Tambah Penilaian</strong></div>
+                        <div class="right"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+
+                    <form id="form-tambah-penilaian">
+                        <!-- Pilih Produk -->
+                        <div class="input-group">
+                            <label>Pilih Produk (Alternatif)</label>
+                            <select id="pilih_produk" required>
+                                <option value="" disabled selected>..Pilih Produk..</option>
+                                <!-- Diisi otomatis oleh script.js -->
+                            </select>
+                            <small class="warning-text">* Produk ini sudah pernah dinilai. Save akan menimpa nilai lama.</small>
+                        </div>
+
+                        <!-- C1 - Kandungan Bahan -->
+                        <div class="input-group">
+                            <label>C1 - Kandungan Bahan</label>
+                            <select class="score-input" data-krit="C1" required>
+                                <option value="" disabled selected>..Pilih..</option>
+                                <option value="100">Bebas bahan haram (100)</option>
+                                <option value="75">Tidak haram, tapi berisiko iritasi ringan (75)</option>
+                                <option value="50">Mengandung bahan sensitif / alkohol ringan (50)</option>
+                                <option value="25">Terdapat kandungan berisiko atau tidak disarankan (25)</option>
+                            </select>
+                        </div>
+
+                        <!-- C2 - Label Halal -->
+                        <div class="input-group">
+                            <label>C2 - Label Halal</label>
+                            <select class="score-input" data-krit="C2" required>
+                                <option value="" disabled selected>..Pilih..</option>
+                                <option value="100">Sertifikat halal MUI aktif (100)</option>
+                                <option value="75">Label halal dari brand (belum MUI) (75)</option>
+                                <option value="50">Tidak ada label halal (50)</option>
+                                <option value="25">Terdeteksi bahan tidak halal (25)</option>
+                            </select>
+                        </div>
+
+                        <!-- C3 - Label BPOM -->
+                        <div class="input-group">
+                            <label>C3 - Label BPOM</label>
+                            <select class="score-input" data-krit="C3" required>
+                                <option value="" disabled selected>..Pilih..</option>
+                                <option value="100">Terdaftar resmi BPOM (100)</option>
+                                <option value="75">Proses pendaftaran BPOM (75)</option>
+                                <option value="50">Tidak diketahui status BPOM (50)</option>
+                                <option value="25">Tidak terdaftar BPOM (25)</option>
+                            </select>
+                        </div>
+
+                        <!-- C4 - Keamanan Bahan -->
+                        <div class="input-group">
+                            <label>C4 - Keamanan Bahan</label>
+                            <select class="score-input" data-krit="C4" required>
+                                <option value="" disabled selected>..Pilih..</option>
+                                <option value="100">Telah diuji aman & dermatologically tested (100)</option>
+                                <option value="75">Bahan aman, namun beberapa belum diuji (75)</option>
+                                <option value="50">Mengandung bahan pengawet kuat (50)</option>
+                                <option value="25">Mengandung zat yang tidak aman / iritan tinggi (25)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-action-footer">
+                            <button type="button" class="btn-batal" onclick="window.location.href='penilaian.html'">
+                                <i class="fa-solid fa-xmark"></i> Batal
+                            </button>
+                            <button type="submit" class="btn-save-penilaian">
+                                <i class="fa-solid fa-floppy-disk"></i> Save
+                            </button>
+                        </div>
+
+                        <p class="footer-note">* Pilih produk dan lengkapi semua pilihan sebelum Save.</p>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/penilaian.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

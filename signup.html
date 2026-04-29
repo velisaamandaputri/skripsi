@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Sistem Rekomendasi Skincare</title>
+    <!-- Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+    <!-- HEADER ATAS -->
+    <header class="top-tagline-bar">
+        <div class="logo-placeholder-circle">
+            <i class="fa-solid fa-lock" style="font-size: 20px;"></i>
+        </div>
+        <p>Sistem Rekomendasi Produk Skincare Halal Berdasarkan Bahan Metode SAW</p>
+    </header>
+
+    <div class="signup-container">
+        <!-- CARD REGISTER (Abu-abu) -->
+        <div class="register-card">
+            <h2>REGISTER ACCOUNT</h2>
+            
+            <form id="signupForm">
+                <div class="input-group">
+                    <input type="text" id="reg-username" placeholder="USERNAME" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="reg-email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="reg-password" placeholder="Password" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="reg-confirm" placeholder="Confirm Password" required>
+                </div>
+
+                <div class="signup-action">
+                    <button type="submit" class="btn-signup-submit">Sign Up</button>
+                </div>
+            </form>
+
+            <!-- TOMBOL BACK (Panah) -->
+            <button class="btn-back-login" onclick="window.location.href='index.html'">
+                &larr;
+            </button>
+        </div>
+    </div>
+
+    <!-- Font Awesome untuk icon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="script-signup.js"></script>
+</body>
+</html>

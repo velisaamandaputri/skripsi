@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Kriteria - SAW Skincare</title>
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand-box">
+                <div class="brand-logo"><i class="fa-solid fa-caret-up"></i></div>
+                <div class="brand-name">
+                    <h3>Sistem Rekomendasi</h3>
+                    <p>produk skincare halal</p>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <span class="label">DATA</span>
+                <a href="dashboard.html" class="nav-link"><i class="fa-solid fa-table-cells-large"></i> Dasboard</a>
+                <a href="kriteria.html" class="nav-link active"><i class="fa-solid fa-list-ul"></i> Data Kriteria</a>
+                <a href="alternatif.html" class="nav-link"><i class="fa-solid fa-address-book"></i> Data Alternatif</a>
+                <a href="penilaian.html" class="nav-link"><i class="fa-solid fa-square-poll-vertical"></i> Penilaian</a>
+                <a href="matriks.html" class="nav-link"><i class="fa-solid fa-table"></i> Matriks Perhitungan</a>
+                <a href="hasil-rekomendasi.html" class="nav-link">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Hasil Rekomendasi
+                </a>
+                <a href="user.html" class="nav-link">
+                    <i class="fa-solid fa-users-gear"></i> Data User
+                </a>
+                <a href="riwayat.html" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat Pengguna</a>
+                <div class="nav-logout">
+                    <a href="#" class="nav-link btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="content-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="back-circle" onclick="window.location.href='kriteria.html'"><i class="fa-solid fa-chevron-left"></i></button>
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="topbar-right">
+                    <div class="admin-profile">
+                        <div class="avatar-circle">A</div>
+                        <div class="info"><strong>Admin</strong><small>online</small></div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="body-content">
+                <div class="header-flex">
+                    <div class="header-title">
+                        <p class="path">Dashboard > Data Kriteria > <span>Tambah</span></p>
+                        <h1>Data Kriteria</h1>
+                    </div>
+                </div>
+
+                <!-- Form Card -->
+                <div class="card-container form-card">
+                    <div class="card-header">
+                        <div class="left"><strong>Tambah Data Kriteria</strong></div>
+                        <div class="right"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+
+                    <form id="form-tambah-kriteria">
+                        <!-- Kode Kriteria -->
+                        <div class="input-group">
+                            <label>Kode Kriteria</label>
+                            <select id="krit_kode" required>
+                                <option value="" disabled selected>..Pilih Kode..</option>
+                                <option value="C1">C1 (Kandungan Bahan)</option>
+                                <option value="C2">C2 (Label Halal)</option>
+                                <option value="C3">C3 (Label BPOM)</option>
+                                <option value="C4">C4 (Status Keamanan Bahan)</option>
+                                <option value="C5">C5 (Kriteria Tambahan)</option>
+                            </select>
+                        </div>
+
+                        <!-- Nama Kriteria -->
+                        <div class="input-group">
+                            <label>Nama Kriteria</label>
+                            <input type="text" id="krit_nama" placeholder="Contoh: Kandungan Bahan" required>
+                        </div>
+
+                        <div class="grid-2">
+                            <!-- Tipe Kriteria -->
+                            <div class="input-group">
+                                <label>Type</label>
+                                <select id="krit_type" required>
+                                    <option value="Benefit">Benefit</option>
+                                    <option value="Cost">Cost</option>
+                                </select>
+                            </div>
+                            <!-- Bobot Kriteria -->
+                            <div class="input-group">
+                                <label>Bobot kriteria</label>
+                                <select id="krit_bobot" required>
+                                    <option value="" disabled selected>..Pilih Bobot..</option>
+                                    <option value="0.4">0.4 (Sangat Penting)</option>
+                                    <option value="0.3">0.3 (Penting)</option>
+                                    <option value="0.2">0.2 (Cukup Penting)</option>
+                                    <option value="0.1">0.1 (Biasa)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <!-- Tombol Save sesuai desain gambar (hijau muda) -->
+                            <button type="submit" class="btn-save-data">
+                                <i class="fa-solid fa-floppy-disk"></i> Save
+                            </button>
+                            <!-- Tombol Restart sesuai desain gambar (biru) -->
+                            <button type="reset" class="btn-restart-data">
+                                <i class="fa-solid fa-rotate-right"></i> Restart
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Pastikan script.js terhubung -->
+    <script src="js/kriteria.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

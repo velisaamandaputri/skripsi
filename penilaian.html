@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penilaian - SAW Skincare</title>
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand-box">
+                <div class="brand-logo"><i class="fa-solid fa-caret-up"></i></div>
+                <div class="brand-name">
+                    <h3>Sistem Rekomendasi</h3>
+                    <p>produk skincare halal</p>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <span class="label">DATA</span>
+                <a href="dashboard.html" class="nav-link">
+                    <i class="fa-solid fa-table-cells-large"></i> Dasboard
+                </a>
+                <a href="kriteria.html" class="nav-link">
+                    <i class="fa-solid fa-list-ul"></i> Data Kriteria
+                </a>
+                <a href="alternatif.html" class="nav-link">
+                    <i class="fa-solid fa-address-book"></i> Data Alternatif
+                </a>
+                <a href="penilaian.html" class="nav-link active">
+                    <i class="fa-solid fa-square-poll-vertical"></i> Penilaian
+                </a>
+                <a href="matriks.html" class="nav-link">
+                    <i class="fa-solid fa-table"></i> Matriks Perhitungan
+                </a>
+                <a href="hasil-rekomendasi.html" class="nav-link">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Hasil Rekomendasi
+                </a>
+                <a href="user.html" class="nav-link">
+                    <i class="fa-solid fa-users-gear"></i> Data User
+                </a>
+
+                <a href="riwayat.html" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat
+                    Pengguna</a>
+
+                <div class="nav-logout">
+                    <a href="#" class="nav-link btn-logout">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="content-area">
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <!-- Tombol back kembali ke dashboard -->
+                    <button class="back-circle" onclick="window.location.href='dashboard.html'"><i
+                            class="fa-solid fa-chevron-left"></i></button>
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="topbar-right">
+                    <div class="admin-profile">
+                        <div class="avatar-circle">A</div>
+                        <div class="info"><strong>Admin</strong><small>online</small></div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="body-content">
+                <!-- JUDUL HALAMAN -->
+                <section class="body-content">
+                    <div class="header-flex">
+                        <div class="header-title">
+                            <p class="path">Dashboard > <span>Penilaian</span></p>
+                            <h1>Penilaian Produk</h1>
+                            <p class="subtitle">Input nilai kriteria untuk setiap kategori produk.</p>
+                        </div>
+                    </div>
+
+                    <!-- TABEL 1: PENILAIAN FACE WASH -->
+                    <div class="card-container mb-30">
+                        <div class="card-header">
+                            <div class="left">
+                                <strong>Data Penilaian Face Wash</strong>
+                                <small>Klik ikon pensil untuk mengisi nilai SAW</small>
+                            </div>
+                            <div class="right" id="total-penilaian-facewash">
+                                <i class="fa-solid fa-clipboard-check"></i> Total: 0 produk
+                            </div>
+                        </div>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="50">NO</th>
+                                        <th>KODE ALTERNATIF</th>
+                                        <th>NAMA PRODUK</th>
+                                        <th width="100">AKSI</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabel-body-penilaian-facewash"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- TABEL 2: PENILAIAN MOISTURIZER -->
+                    <div class="card-container mb-30">
+                        <div class="card-header">
+                            <div class="left">
+                                <strong>Data Penilaian Moisturizer</strong>
+                                <small>Klik ikon pensil untuk mengisi nilai SAW</small>
+                            </div>
+                            <div class="right" id="total-penilaian-moisturizer">
+                                <i class="fa-solid fa-clipboard-check"></i> Total: 0 produk
+                            </div>
+                        </div>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="50">NO</th>
+                                        <th>KODE ALTERNATIF</th>
+                                        <th>NAMA PRODUK</th>
+                                        <th width="100">AKSI</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabel-body-penilaian-moisturizer"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- TABEL 3: PENILAIAN SUNSCREEN -->
+                    <div class="card-container">
+                        <div class="card-header">
+                            <div class="left">
+                                <strong>Data Penilaian Sunscreen</strong>
+                                <small>Klik ikon pensil untuk mengisi nilai SAW</small>
+                            </div>
+                            <div class="right" id="total-penilaian-sunscreen">
+                                <i class="fa-solid fa-clipboard-check"></i> Total: 0 produk
+                            </div>
+                        </div>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="50">NO</th>
+                                        <th>KODE ALTERNATIF</th>
+                                        <th>NAMA PRODUK</th>
+                                        <th width="100">AKSI</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabel-body-penilaian-sunscreen"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <script src="js/penilaian.js"></script>
+                <script src="script.js"></script>
+</body>
+
+</html>

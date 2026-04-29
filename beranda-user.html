@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda User - SAW Skincare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="user-body">
+
+    <div class="app-container">
+        <!-- SIDEBAR USER -->
+        <aside class="sidebar-user">
+            <div class="brand-user">
+                <div class="brand-icon-white">
+                    <i class="fa-solid fa-bottle-droplet" style="color: #ff9a9e;"></i>
+                </div>
+                <div class="brand-text">
+                    <h3>Sistem Rekomendasi</h3>
+                    <p>produk skincare halal</p>
+                </div>
+            </div>
+
+            <nav class="nav-user">
+                <a href="beranda-user.html" class="nav-link-user active">
+                    <span class="icon">🏠</span> Beranda
+                </a>
+                <a href="mulai-rekomendasi.html" class="nav-link-user">
+                    <span class="icon">➕</span> Mulai Rekomendasi
+                </a>
+                <a href="hasil-rekomendasi-user.html" class="nav-link-user">
+                    <span class="icon">💡</span> Hasil Rekomendasi
+                </a>
+            </nav>
+
+            <div class="logout-container-user">
+                <button class="btn-logout-card" onclick="window.location.href='index.html'">
+                    Logout <i class="fa-solid fa-arrow-right-long"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="content-area-user">
+            <!-- TOPBAR USER (TAMBAHAN BARU) -->
+            <header class="user-topbar">
+                <div class="topbar-left">
+                    <button class="back-circle-user" style="visibility: hidden;"><i
+                            class="fa-solid fa-chevron-left"></i></button>
+                    <h2 class="user-name-title">Velisa Amanda Putri</h2>
+                </div>
+                <div class="topbar-right">
+                    <div class="user-profile-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="hero-user">
+                <h1>Sistem Rekomendasi Produk Skincare <br> Halal Metode SAW</h1>
+                <p>Dapatkan rekomendasi produk skincare halal</p>
+
+                <button class="btn-mulai-header" onclick="window.location.href='mulai-rekomendasi.html'">
+                    Mulai Rekomendasi
+                </button>
+            </div>
+
+            <!-- Card Hasil Rekomendasi (Tertaut ke Hasil SAW) -->
+            <!-- Cari bagian <div class="card-user-result"> dan ganti dengan kode di bawah ini -->
+
+            <!-- 1. TABEL FACE WASH -->
+            <div class="card-user-result" style="margin-bottom: 30px;">
+                <div class="card-header-grey-user">
+                    <i class="fa-solid fa-soap"></i>
+                    <div class="text">
+                        <strong>Rekomendasi</strong>
+                        <strong>Face Wash</strong>
+                    </div>
+                </div>
+                <div class="table-container-user">
+                    <table id="tabel-beranda-facewash">
+                        <thead>
+                            <tr>
+                                <th width="80">KODE</th>
+                                <th width="100">UMUR</th>
+                                <th width="150">TYPE KULIT</th>
+                                <th>PERMASALAHAN</th>
+                                <th>MEREK (NAMA PRODUK)</th>
+                                <th width="100">RANK</th>
+                            </tr>
+                        </thead>
+                        <tbody><!-- Diisi JS --></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. TABEL MOISTURIZER -->
+            <div class="card-user-result" style="margin-bottom: 30px;">
+                <div class="card-header-grey-user">
+                    <i class="fa-solid fa-droplet"></i>
+                    <div class="text">
+                        <strong>Rekomendasi</strong>
+                        <strong>Moisturizer</strong>
+                    </div>
+                </div>
+                <div class="table-container-user">
+                    <table id="tabel-beranda-moisturizer">
+                        <thead>
+                            <tr>
+                                <th width="80">KODE</th>
+                                <th width="100">UMUR</th>
+                                <th width="150">TYPE KULIT</th>
+                                <th>PERMASALAHAN</th>
+                                <th>MEREK (NAMA PRODUK)</th>
+                                <th width="100">RANK</th>
+                            </tr>
+                        </thead>
+                        <tbody><!-- Diisi JS --></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 3. TABEL SUNSCREEN -->
+            <div class="card-user-result">
+                <div class="card-header-grey-user">
+                    <i class="fa-solid fa-sun"></i>
+                    <div class="text">
+                        <strong>Rekomendasi</strong>
+                        <strong>Sunscreen</strong>
+                    </div>
+                </div>
+                <div class="table-container-user">
+                    <table id="tabel-beranda-sunscreen">
+                        <thead>
+                            <tr>
+                                <th>Kode</th>
+                                <th>Umur</th>
+                                <th>Type Kulit</th>
+                                <th>Permasalahan</th>
+                                <th>Merek</th>
+                                <th>Rank</th>
+                            </tr>
+                        </thead>
+                        <tbody><!-- Diisi JS --></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <p class="dummy-note" style="margin-top: 20px;">*Menampilkan hasil terbaik berdasarkan tipe kulit yang Anda
+                masukkan.</p>
+
+            <script src="js/saw.js"></script>
+            <script src="js/riwayat.js"></script>
+            <script src="script.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    renderHasilRekomendasiBeranda();
+                });
+            </script>
+</body>
+
+</html>

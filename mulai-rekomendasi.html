@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulai Rekomendasi - SAW Skincare</title>
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="user-body">
+
+    <div class="app-container">
+        <!-- SIDEBAR USER -->
+        <aside class="sidebar-user">
+            <div class="brand-user">
+                <div class="brand-icon-white">
+                    <i class="fa-solid fa-bottle-droplet" style="color: #ff9a9e;"></i>
+                </div>
+                <div class="brand-text">
+                    <h3>Sistem Rekomendasi</h3>
+                    <p>produk skincare halal</p>
+                </div>
+            </div>
+
+            <nav class="nav-user">
+                <a href="beranda-user.html" class="nav-link-user">
+                    <span class="icon">🏠</span> Beranda
+                </a>
+                <a href="mulai-rekomendasi.html" class="nav-link-user active">
+                    <span class="icon">➕</span> Mulai Rekomendasi
+                </a>
+                <a href="hasil-rekomendasi-user.html" class="nav-link-user">
+                    <span class="icon">💡</span> Hasil Rekomendasi
+                </a>
+            </nav>
+
+            <div class="logout-container-user">
+                <button class="btn-logout-card" onclick="window.location.href='index.html'">
+                    Logout <i class="fa-solid fa-arrow-right-long"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="content-area-user">
+            <!-- TOPBAR USER -->
+            <header class="user-topbar">
+                <div class="topbar-left">
+                    <button class="back-circle-user" onclick="window.location.href='beranda-user.html'">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <h2 class="user-name-title">Velisa Amanda Putri</h2>
+                </div>
+                <div class="topbar-right">
+                    <div class="user-profile-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- HERO TITLE -->
+            <div class="hero-user">
+                <h1>Sistem Rekomendasi Produk Skincare <br> Halal Metode SAW</h1>
+                <p>Dapatkan rekomendasi produk skincare halal</p>
+            </div>
+
+            <!-- FORM CARD -->
+            <div class="form-card-user">
+                <form id="formRekomendasi">
+                    <!-- Jenis Kelamin -->
+                    <div class="input-field-user">
+                        <label>Jenis Kelamin</label>
+                        <select id="jk" required>
+                            <option value="" disabled selected></option>
+                            <option value="Perempuan">Perempuan</option>
+                            <option value="Laki-laki">Laki-laki</option>
+                        </select>
+                    </div>
+
+                    <!-- Usia -->
+                    <div class="input-field-user">
+                        <label>Usia</label>
+                        <select id="usia" required>
+                            <option value="" disabled selected></option>
+                            <option value="18">18 Tahun</option>
+                            <option value="18-21">18-21 Tahun</option>
+                            <option value="21-25">21-25 Tahun</option>
+                            <option value=">25">> 25 Tahun</option>
+                        </select>
+                    </div>
+
+                    <!-- Type Kulit -->
+                    <div class="input-field-user">
+                        <label>Type Kulit</label>
+                        <select id="tipe_kulit" required>
+                            <option value="" disabled selected></option>
+                            <option value="Normal">Normal</option>
+                            <option value="Berminyak">Berminyak</option>
+                            <option value="Kering">Kering</option>
+                            <option value="Sensitif">Sensitif</option>
+                            <option value="Kombinasi">Kombinasi</option>
+                        </select>
+                    </div>
+
+                    <!-- Permasalahan kulit -->
+                    <div class="input-field-user">
+                        <label>Permasalahan</label>
+                        <select id="Permasalahan" required>
+                            <option value="" disabled selected></option>
+                            <option value="Jerawat">Jerawat</option>
+                            <option value="Kusam">Kusam</option>
+                            <option value="Kemerahan atau iritasi">Kemerahan dan iritasi</option>
+                            <option value="Flek atau Hiperpigmentasi">Flek atau Hiperpigmentasi</option>
+                            <option value="Pori-Pori besar dan Komedo">Pori-Pori besar dan Komedo</option>
+                            <option value="Skin Barrier Rusak">Skin barrier Rusak</option>
+                        </select>
+                    </div>
+
+                    <!-- Button Action -->
+                    <div class="form-footer-user">
+                        <button type="submit" class="btn-rekomendasi-submit">
+                            Rekomendasi
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/riwayat.js"></script>
+</body>
+
+</html>
