@@ -26,7 +26,7 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
         })
         .then(data => {
             if (data.status === "success") {
-                alert("Login berhasil!");
+                alert("Login berhasil ANjayyyyy!");
 
                 if (data.role === 'admin') {
                     window.location.href = "dashboard.html";

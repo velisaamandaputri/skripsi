@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 29, 2026 at 11:42 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Host: localhost:3306
+-- Waktu pembuatan: 29 Apr 2026 pada 14.58
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_skincare`
+-- Database: `skincare`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `alternatif`
+-- Struktur dari tabel `alternatif`
 --
 
 CREATE TABLE `alternatif` (
@@ -38,7 +38,7 @@ CREATE TABLE `alternatif` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `alternatif`
+-- Dumping data untuk tabel `alternatif`
 --
 
 INSERT INTO `alternatif` (`id`, `kode`, `nama`, `kategori`, `kulit`, `masalah`, `created_at`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `alternatif` (`id`, `kode`, `nama`, `kategori`, `kulit`, `masalah`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kriteria`
+-- Struktur dari tabel `kriteria`
 --
 
 CREATE TABLE `kriteria` (
@@ -60,23 +60,26 @@ CREATE TABLE `kriteria` (
   `kode` varchar(10) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `type` enum('Benefit','Cost') NOT NULL,
-  `bobot` float NOT NULL
+  `bobot` decimal(5,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `kriteria`
+-- Dumping data untuk tabel `kriteria`
 --
 
 INSERT INTO `kriteria` (`id`, `kode`, `nama`, `type`, `bobot`) VALUES
-(1, 'C1', 'Komposisi Bahan', 'Benefit', 0.4),
-(2, 'C2', 'Logo Halal', 'Benefit', 0.3),
-(3, 'C3', 'Daftar BPOM', 'Benefit', 0.2),
-(4, 'C4', 'Status Kandungan', 'Benefit', 0.1);
+(1, 'C1', 'Komposisi Bahan', 'Benefit', 0.20),
+(2, 'C2', 'Logo Halal', 'Benefit', 0.20),
+(3, 'C3', 'Daftar BPOM', 'Benefit', 0.15),
+(4, 'C4', 'Status Kandungan', 'Benefit', 0.10),
+(7, 'C5', 'Permasalahan Kulit', 'Benefit', 0.15),
+(8, 'C6', 'Jenis Kulit', 'Benefit', 0.10),
+(9, 'C7', 'Usia', 'Cost', 0.10);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penilaian`
+-- Struktur dari tabel `penilaian`
 --
 
 CREATE TABLE `penilaian` (
@@ -86,25 +89,28 @@ CREATE TABLE `penilaian` (
   `C2` float DEFAULT 0,
   `C3` float DEFAULT 0,
   `C4` float DEFAULT 0,
+  `C5` float DEFAULT 0,
+  `C6` float DEFAULT 0,
+  `C7` float DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `penilaian`
+-- Dumping data untuk tabel `penilaian`
 --
 
-INSERT INTO `penilaian` (`id`, `alternatif_id`, `C1`, `C2`, `C3`, `C4`, `created_at`, `updated_at`) VALUES
-(27, 4, 100, 50, 75, 100, '2026-04-20 17:22:16', '2026-04-20 17:33:23'),
-(31, 9, 75, 100, 100, 75, '2026-04-21 01:45:45', '2026-04-21 01:45:45'),
-(32, 10, 100, 100, 100, 75, '2026-04-21 01:46:17', '2026-04-21 01:46:17'),
-(33, 11, 50, 100, 100, 75, '2026-04-21 01:57:20', '2026-04-21 01:57:20'),
-(34, 12, 75, 100, 100, 100, '2026-04-21 01:57:43', '2026-04-21 01:57:43');
+INSERT INTO `penilaian` (`id`, `alternatif_id`, `C1`, `C2`, `C3`, `C4`, `C5`, `C6`, `C7`, `created_at`, `updated_at`) VALUES
+(27, 4, 100, 50, 75, 100, 100, 80, 25, '2026-04-20 17:22:16', '2026-04-29 11:38:47'),
+(31, 9, 75, 100, 100, 75, 80, 60, 50, '2026-04-21 01:45:45', '2026-04-29 11:39:15'),
+(32, 10, 100, 100, 100, 75, 40, 80, 75, '2026-04-21 01:46:17', '2026-04-29 11:39:38'),
+(33, 11, 25, 75, 75, 25, 60, 40, 75, '2026-04-21 01:57:20', '2026-04-29 11:39:48'),
+(34, 12, 75, 100, 100, 100, 40, 60, 50, '2026-04-21 01:57:43', '2026-04-29 11:39:57');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `riwayat_pengguna`
+-- Struktur dari tabel `riwayat_pengguna`
 --
 
 CREATE TABLE `riwayat_pengguna` (
@@ -118,7 +124,7 @@ CREATE TABLE `riwayat_pengguna` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `riwayat_pengguna`
+-- Dumping data untuk tabel `riwayat_pengguna`
 --
 
 INSERT INTO `riwayat_pengguna` (`id`, `username`, `jk`, `usia`, `tipe_kulit`, `permasalahan`, `created_at`) VALUES
@@ -126,12 +132,20 @@ INSERT INTO `riwayat_pengguna` (`id`, `username`, `jk`, `usia`, `tipe_kulit`, `p
 (2, 'User', 'Laki-laki', 18, 'Berminyak', 'Flek atau Hiperpigmentasi', '0000-00-00 00:00:00'),
 (3, 'User', 'Perempuan', 18, 'Sensitif', 'Skin Barrier Rusak', '0000-00-00 00:00:00'),
 (4, 'User', 'Perempuan', 18, 'Normal', 'Kusam', '0000-00-00 00:00:00'),
-(5, 'User', 'Perempuan', 18, 'Normal', 'Kusam', '0000-00-00 00:00:00');
+(5, 'User', 'Perempuan', 18, 'Normal', 'Kusam', '0000-00-00 00:00:00'),
+(6, 'User', 'Laki-laki', 18, 'Kering', 'Skin Barrier Rusak', '0000-00-00 00:00:00'),
+(7, 'User', 'Laki-laki', 18, 'Berminyak', 'Kemerahan atau iritasi', '0000-00-00 00:00:00'),
+(8, 'User', 'Perempuan', 18, 'Berminyak', 'Kusam', '0000-00-00 00:00:00'),
+(9, 'User', 'Perempuan', 18, 'Normal', 'Skin Barrier Rusak', '0000-00-00 00:00:00'),
+(10, 'User', 'Laki-laki', 18, 'Sensitif', 'Kemerahan atau iritasi', '0000-00-00 00:00:00'),
+(11, 'User', 'Perempuan', 18, 'Kombinasi', 'Jerawat', '0000-00-00 00:00:00'),
+(12, 'User', 'Perempuan', 18, 'Berminyak', 'Flek atau Hiperpigmentasi', '0000-00-00 00:00:00'),
+(13, 'User', 'Laki-laki', 12, 'Berminyak', 'Pori-Pori besar dan Komedo', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -143,7 +157,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `nama`, `email`, `password`, `role`) VALUES
@@ -155,76 +169,76 @@ INSERT INTO `users` (`id`, `nama`, `email`, `password`, `role`) VALUES
 --
 
 --
--- Indexes for table `alternatif`
+-- Indeks untuk tabel `alternatif`
 --
 ALTER TABLE `alternatif`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kriteria`
+-- Indeks untuk tabel `kriteria`
 --
 ALTER TABLE `kriteria`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `penilaian`
+-- Indeks untuk tabel `penilaian`
 --
 ALTER TABLE `penilaian`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_alternatif` (`alternatif_id`);
 
 --
--- Indexes for table `riwayat_pengguna`
+-- Indeks untuk tabel `riwayat_pengguna`
 --
 ALTER TABLE `riwayat_pengguna`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `alternatif`
+-- AUTO_INCREMENT untuk tabel `alternatif`
 --
 ALTER TABLE `alternatif`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `kriteria`
+-- AUTO_INCREMENT untuk tabel `kriteria`
 --
 ALTER TABLE `kriteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `penilaian`
+-- AUTO_INCREMENT untuk tabel `penilaian`
 --
 ALTER TABLE `penilaian`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT for table `riwayat_pengguna`
+-- AUTO_INCREMENT untuk tabel `riwayat_pengguna`
 --
 ALTER TABLE `riwayat_pengguna`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `penilaian`
+-- Ketidakleluasaan untuk tabel `penilaian`
 --
 ALTER TABLE `penilaian`
   ADD CONSTRAINT `fk_alternatif` FOREIGN KEY (`alternatif_id`) REFERENCES `alternatif` (`id`) ON DELETE CASCADE;
