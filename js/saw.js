@@ -221,8 +221,7 @@ async function renderRekomendasiUser() {
     // Hitung semua kategori (Contoh: Face Wash)
     const allProducts = await hitungSAW('facewash');
 
-    // FILTER: Hanya tampilkan yang tipe kulitnya cocok
-    // const filtered = allProducts.filter(p => p.kulit === filterUser.tipe_kulit);
+
     const filtered = allProducts.filter(p => p.kulit === filterUser.p_kulit);
 
     tbody.innerHTML = '';
@@ -383,7 +382,7 @@ async function renderHasilAkhirBeranda(kategori, idTabel) {
         console.log('Total Products:', results.length);
 
         if (!filterUser) {
-            tbody.innerHTML = '<tr><td colspan="6" class="center">Silakan isi data rekomendasi terlebih dahulu.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="7" class="center">Silakan isi data rekomendasi terlebih dahulu.</td></tr>';
             return;
         }
 
@@ -395,7 +394,7 @@ async function renderHasilAkhirBeranda(kategori, idTabel) {
         console.log('Filtered Products:', filtered.length);
 
         if (filtered.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" class="center">Tidak ada produk yang cocok.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="7" class="center">Tidak ada produk yang cocok.</td></tr>';
             return;
         }
 
@@ -412,6 +411,11 @@ async function renderHasilAkhirBeranda(kategori, idTabel) {
                 <td>${filterUser.masalah || filterUser.Permasalahan || '-'}</td>
                 <td><strong>${res.nama}</strong></td>
                 <td class="center">
+                    <span style="background: #e3f2fd; color: #1976d2; padding: 4px 10px; border-radius: 8px; font-weight: bold;">
+                        ${res.vi.toFixed(4)}
+                    </span>
+                </td>
+                <td class="center">
                     <span class="badge-rank" style="background: #ff9a9e; color: white; padding: 4px 10px; border-radius: 12px; font-weight: bold;">
                         #${index + 1}
                     </span>
@@ -423,7 +427,7 @@ async function renderHasilAkhirBeranda(kategori, idTabel) {
 
     } catch (error) {
         console.error(`❌ Gagal render beranda kategori ${kategori}:`, error);
-        tbody.innerHTML = '<tr><td colspan="6" class="center">Terjadi kesalahan saat memuat data.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="7" class="center">Terjadi kesalahan saat memuat data.</td></tr>';
     }
 }
 
