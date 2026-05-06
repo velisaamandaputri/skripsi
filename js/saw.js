@@ -97,15 +97,11 @@ async function hitungSAW(kategori) {
             m.vals[6] > 0 ? minValues[6] / m.vals[6] : 0 // C7: Cost (rumus terbalik)
         ];
 
-        // // Perhitungan SAW: (r * W)
-        // const v = (r[0] * W[0]) + (r[1] * W[1]) + (r[2] * W[2]) + (r[3] * W[3]) +
-        //     (r[4] * W[4]) + (r[5] * W[5]) + (r[6] * W[6]);
-
         // Perhitungan SAW: (r * W)
-        //r : hasil normalisasi
-        //w : bobot kriteria
-        const v = (r[0] * W[0.20]) + (r[1] * W[0.20]) + (r[2] * W[0.15]) + (r[3] * W[0.10]) +
-            (r[4] * W[0.15]) + (r[5] * W[0.10]) + (r[6] * W[0.10]);
+        // r : hasil normalisasi
+        // W : bobot kriteria dari database
+        const v = (r[0] * W[0]) + (r[1] * W[1]) + (r[2] * W[2]) + (r[3] * W[3]) +
+            (r[4] * W[4]) + (r[5] * W[5]) + (r[6] * W[6]);
 
         return {
             ...m,
@@ -282,7 +278,7 @@ async function renderHasilAkhir(kategori, idTabel) {
         tbody.innerHTML = '';
 
         if (filtered.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="6" class="center">Tidak ada produk yang cocok.</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="7" class="center">Tidak ada produk yang cocok.</td></tr>`;
             return;
         }
 
@@ -294,6 +290,11 @@ async function renderHasilAkhir(kategori, idTabel) {
                 <td class="center">${res.kulit}</td>
                 <td>${filterUser.masalah || filterUser.Permasalahan || '-'}</td>
                 <td><strong>${res.nama}</strong></td>
+                <td class="center">
+                    <span style="background: #e3f2fd; color: #1976d2; padding: 4px 10px; border-radius: 8px; font-weight: bold;">
+                        ${res.vi.toFixed(4)}
+                    </span>
+                </td>
                 <td class="center">
                     <span class="badge-rank" style="background: #ff9a9e; color: white; padding: 4px 10px; border-radius: 12px; font-weight: bold;">
                         #${index + 1}

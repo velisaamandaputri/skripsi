@@ -60,7 +60,7 @@ async function renderRiwayatAdmin() {
         const daftarRiwayat = await response.json();
 
         if (!Array.isArray(daftarRiwayat) || daftarRiwayat.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" class="center" style="padding: 30px;">Belum ada riwayat di database.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="7" class="center" style="padding: 30px;">Belum ada riwayat di database.</td></tr>';
             if (labelTotal) labelTotal.innerText = "Total: 0 data";
             return;
         }
@@ -79,6 +79,12 @@ async function renderRiwayatAdmin() {
                         </span>
                     </td>
                     <td class="center">${item.permasalahan || '-'}</td>
+                    <td class="center">
+                        <button class="btn-hapus" onclick="hapusRiwayat(${item.id})" 
+                            style="background-color: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+                            <i class="fa-solid fa-trash"></i> Hapus
+                        </button>
+                    </td>
                 </tr>
             `;
         });
@@ -87,6 +93,35 @@ async function renderRiwayatAdmin() {
         if (labelTotal) labelTotal.innerText = `Total: ${daftarRiwayat.length} data`;
     } catch (error) {
         console.error("Gagal mengambil riwayat:", error);
+    }
+}
+
+/**
+ * HAPUS RIWAYAT INDIVIDUAL
+ */
+async function hapusRiwayat(id) {
+    if (!confirm('Apakah Anda yakin ingin menghapus riwayat ini?')) {
+        return;
+    }
+
+    try {
+        const response = await fetch('be/hapus_riwayat.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: id })
+        });
+
+        const result = await response.json();
+
+        if (result.status === 'success') {
+            alert('Riwayat berhasil dihapus!');
+            renderRiwayatAdmin(); // Refresh tabel
+        } else {
+            alert('Gagal menghapus riwayat: ' + result.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Terjadi kesalahan saat menghapus riwayat.');
     }
 }
 
