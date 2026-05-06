@@ -231,7 +231,7 @@ async function renderRekomendasiUser() {
         filtered.forEach((res, index) => {
             tbody.innerHTML += `
                 <tr>
-                    <td class="center">A${res.kode.replace(/\D/g, '')}</td>
+                    <td class="center">${res.kode}</td>
                     <td>${res.nama}</td>
                     <td class="center">${res.vi.toFixed(3)}</td>
                     <td class="center"><strong>#${index + 1}</strong></td>
@@ -284,7 +284,7 @@ async function renderHasilAkhir(kategori, idTabel) {
         // Render Baris Tabel
         tbody.innerHTML = filtered.map((res, index) => `
             <tr>
-                <td class="center">A${res.kode.replace(/\D/g, '')}</td>
+                <td class="center">${res.kode}</td>
                 <td class="center">${filterUser.usia} Th</td>
                 <td class="center">${res.kulit}</td>
                 <td>${filterUser.masalah || filterUser.Permasalahan || '-'}</td>
@@ -405,7 +405,7 @@ async function renderHasilAkhirBeranda(kategori, idTabel) {
 
         tbody.innerHTML = top3.map((res, index) => `
             <tr>
-                <td class="center">A${res.kode.replace(/\D/g, '')}</td>
+                <td class="center">${res.kode}</td>
                 <td class="center">${filterUser.usia} Th</td>
                 <td class="center">${filterUser.tipe_kulit}</td>
                 <td>${filterUser.masalah || filterUser.Permasalahan || '-'}</td>
@@ -468,7 +468,7 @@ async function prosesHitungDanRenderUser(dbKey, tbodySelector, filter) {
         top3.forEach((res, index) => {
             tbody.innerHTML += `
                 <tr>
-                    <td class="center">A${res.kode.replace(/\D/g, '')}</td>
+                    <td class="center">${res.kode}</td>
                     <td><strong>${res.nama}</strong></td>
                     <td class="center">${res.vi.toFixed(3)}</td>
                     <td class="center"><span class="badge-rank">#${index + 1}</span></td>
