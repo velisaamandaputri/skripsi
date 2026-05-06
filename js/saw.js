@@ -97,9 +97,15 @@ async function hitungSAW(kategori) {
             m.vals[6] > 0 ? minValues[6] / m.vals[6] : 0 // C7: Cost (rumus terbalik)
         ];
 
+        // // Perhitungan SAW: (r * W)
+        // const v = (r[0] * W[0]) + (r[1] * W[1]) + (r[2] * W[2]) + (r[3] * W[3]) +
+        //     (r[4] * W[4]) + (r[5] * W[5]) + (r[6] * W[6]);
+
         // Perhitungan SAW: (r * W)
-        const v = (r[0] * W[0]) + (r[1] * W[1]) + (r[2] * W[2]) + (r[3] * W[3]) +
-            (r[4] * W[4]) + (r[5] * W[5]) + (r[6] * W[6]);
+        //r : hasil normalisasi
+        //w : bobot kriteria
+        const v = (r[0] * W[0.20]) + (r[1] * W[0.20]) + (r[2] * W[0.15]) + (r[3] * W[0.10]) +
+            (r[4] * W[0.15]) + (r[5] * W[0.10]) + (r[6] * W[0.10]);
 
         return {
             ...m,
@@ -220,11 +226,12 @@ async function renderRekomendasiUser() {
     const allProducts = await hitungSAW('facewash');
 
     // FILTER: Hanya tampilkan yang tipe kulitnya cocok
-    const filtered = allProducts.filter(p => p.kulit === filterUser.tipe_kulit);
+    // const filtered = allProducts.filter(p => p.kulit === filterUser.tipe_kulit);
+    const filtered = allProducts.filter(p => p.kulit === filterUser.p_kulit);
 
     tbody.innerHTML = '';
     if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="4" class="center">Tidak ada produk cocok untuk tipe kulit ${filterUser.tipe_kulit}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="4" class="center">Tidak ada produk cocok untuk tipe kulit ${filterUser.p_kulit}</td></tr>`;
     } else {
         filtered.forEach((res, index) => {
             tbody.innerHTML += `
